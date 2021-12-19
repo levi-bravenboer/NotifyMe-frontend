@@ -2,12 +2,21 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     :root {
-    --purple-primary: hsl(243, 69, 59);
-    --accent-pink: hsl(345, 88, 63);
-    --neutral-light: hsl(222, 100, 97);
-    --lavender-secondary: hsl(237, 21, 52);
-    --dark-primary: hsl(237, 56, 20);
-    --border-colour: hsl(260, 68, 83);
+    --purple-primary: #554DDE;
+    --accent-pink: #F44E77;
+    --neutral-light: #F2F6FF;
+    --lavender-secondary: #6A6D9E;
+    --semi-brown: rgba(86, 66, 62, 0.98);
+    --semi-brown-hover: rgba(86, 66, 62, 0.8);
+    --border-colour: #CAB6F1;
+    --cool-blue: #A6D0E7;
+    --cool-blue-hover: #88baff;
+
+    --outerlayout-bg-color: hsl(54, 63%, 91%);
+    --innerlayout-bg-color: #FFFEF6;
+    --green-color: hsla(158, 99%, 43%, 1);
+
+
     }
 
     *{
@@ -15,10 +24,22 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         list-style: None;
         box-sizing: border-box;
+        font-family: 'Nunito', sans-serif;
     }
     
+    html{
+        margin: 0;
+        padding: 0;
+    }
     body{
-        background-color: var(--accent-pink);
+        color: black;
+        font-size: 1.4rem;
+        overflow: hidden;
+    }
+
+    a{
+        color: inherit;
+        text-decoration:none;
     }
 `;
 
