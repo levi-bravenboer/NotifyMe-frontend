@@ -1,54 +1,120 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import NavButton from "./NavButton";
 import { Link } from "react-router-dom";
 
 function Nav(props) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <NavigationStyled>
-      <ul>
-        <li className={props.discover ? "clickedItem" : null}>
-          <Link to="/">Discover</Link>
-        </li>
-        <li className={props.pricing ? "clickedItem" : null}>
-          <Link to="/pricing">Pricing</Link>
-        </li>
-        <li className={props.how ? "clickedItem" : null}>
-          <Link to="/how">How it Works</Link>
-        </li>
-      </ul>
-      <NavButton name={"Login"} />
-    </NavigationStyled>
+    <NavBar>
+      <Link to="/">
+        <Logo>
+          NOTIFY <span>me</span>
+        </Logo>
+      </Link>
+      <Hamburger onClick={() => setIsOpen(!isOpen)}>
+        <span />
+        <span />
+        <span />
+      </Hamburger>
+      <Menu isOpen={isOpen}>
+        <Link to="/">
+          <MenuItem active={props.discover}>Discover</MenuItem>
+        </Link>
+        <Link to="/pricing">
+          <MenuItem active={props.pricing}>Pricing</MenuItem>
+        </Link>
+        <Link to="/How">
+          <MenuItem active={props.how}>How it works</MenuItem>
+        </Link>
+        <Link to="/">
+          <NavButton name="Login"></NavButton>
+        </Link>
+      </Menu>
+    </NavBar>
   );
 }
 
-const NavigationStyled = styled.nav`
-  display: flex;
+const NavBar = styled.div`
+  padding: 0 2rem;
   justify-content: space-between;
-  min-height: 10vh;
+  display: flex;
   align-items: center;
-  width: 90%;
-  margin-left: 20%;
-  ul {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    align-items: center;
-  }
-  li {
-    font-family: "Avenir Next", sans-serif !important;
+  flex-wrap: wrap;
+  background: none;
+  margin-top: 1rem;
 
-    :hover {
-      color: var(--green-color);
+  @media (max-width: 940px) {
+    margin-top: 0;
+    border-radius: 8px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: var(--cool-blue);
+  }
+`;
+
+const Hamburger = styled.div`
+  flex-direction: column;
+  cursor: pointer;
+
+  span {
+    height: 2px;
+    width: 25px;
+    background: black;
+    margin-bottom: 4px;
+    border-radius: 5px;
+
+    @media (max-width: 940px) {
+      display: flex;
     }
   }
+`;
 
-  button {
-    margin-right: 15%;
+const MenuItem = styled.a`
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    color: var(--green-color);
   }
 
-  .clickedItem {
+  ${({ active }) =>
+    active &&
+    `
     color: var(--green-color);
+  `}
+  @media (max-width: 940px) {
+    font-size: 1rem;
+  }
+`;
+
+const Logo = styled.a`
+  padding: 1rem 0;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.7rem;
+
+  span {
+    font-weight: 300;
+    font-size: 1.3rem;
+  }
+`;
+
+const Menu = styled.a`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  @media (max-width: 940px) {
+    overflow: hidden;
+    flex-direction: column;
+    width: 100%;
+    max-height: ${({ isOpen }) => (isOpen ? "300px" : "0px")};
+    transition: max-height 0.3s ease-in;
   }
 `;
 
