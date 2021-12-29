@@ -18,6 +18,7 @@ const NavButtonStyled = styled.button`
   :hover {
     border: 1px solid var(--green-color);
     color: var(--green-color);
+    transition: all 0.2s ease-in;
   }
 `;
 
