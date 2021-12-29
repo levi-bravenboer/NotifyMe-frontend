@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import blueBackground from "../Img/blue_background_item.svg";
 
 export const OuterLayout = styled.section`
   background-color: var(--outerlayout-bg-color);
@@ -10,6 +11,10 @@ export const OuterLayout = styled.section`
 `;
 
 export const InnerLayout = styled.section`
+  background-image: url(${blueBackground});
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
   background-color: var(--innerlayout-bg-color);
   position: absolute;
   left: 5%;
@@ -20,4 +25,14 @@ export const InnerLayout = styled.section`
   height: 90%;
   box-shadow: 0px 4px 70px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
+
+  @media screen and (max-width: 940px) {
+    background-image: none;
+    width: 95%;
+    height: 95%;
+    left: 2.5%;
+    right: 2.5%;
+    top: 2.5%;
+    bottom: 2.5%;
+  }
 `;
