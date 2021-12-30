@@ -7,7 +7,7 @@ function Nav(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <NavBar>
+    <NavBar isOpen={isOpen}>
       <Link to="/">
         <Logo>
           NOTIFY <span>me</span>
@@ -50,7 +50,8 @@ const NavBar = styled.div`
     border-radius: 8px;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: var(--cool-blue);
+    background-color: ${({ isOpen }) => isOpen && "var(--cool-blue)"};
+    transition: all 0.2s ease-in-out;
   }
 `;
 
@@ -88,6 +89,7 @@ const MenuItem = styled.a`
   `}
   @media (max-width: 940px) {
     font-size: 1rem;
+    padding-top: 1rem;
   }
 `;
 
@@ -114,7 +116,7 @@ const Menu = styled.a`
     flex-direction: column;
     width: 100%;
     max-height: ${({ isOpen }) => (isOpen ? "300px" : "0px")};
-    transition: max-height 0.3s ease-in;
+    transition: all 0.2s ease-in-out;
   }
 `;
 
