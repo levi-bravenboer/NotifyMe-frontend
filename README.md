@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Inhoudsopgave
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Introduction
+2. Lijst met benodigdheden
+3. Installatie handleiding
+4. Testen (JEST and Cypress)
+5. Inloggegevens en hoe te registreren
+6. Scripts NPM
 
-## Available Scripts
+# Introduction
 
-In the project directory, you can run:
+This README descripse the webapp for Notify me.
 
-### `npm start`
+Ever had that special bag or coat you wanted to buy, but it is always sold out? Checkout notify and subscripe to an item to get a notification from.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Within this webapp you can choose which item you want to follow and see all data we got from it earlier **out of stock / in stock status**.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Home:
+![Home](./Assets/home_page_screenshot.png)
 
-### `npm test`
+Profile page:
+![Profile](./Assets/profile_page_screenshot.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project is created with: [Create React App](https://github.com/facebook/create-react-app).
 
-### `npm run build`
+# Needed software/accounts
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Node.js _(versie v12.18.4 of hoger)_
+2. NPM
+3. Git
+4. Google account
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# installation manual
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. open a terminal
+2. Clone the git repository.
+3. Install node_modules by running this command: **npm install**
+4. Start the application by running this command: **npm start**
 
-### `npm run eject`
+Open http://localhost:3000 in a webbrowser
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Testen
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+De unit testen zijn te vinden in de map: Tests/Register.test.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+De JEST testen zijn uit te voeren door het volgende commando in de terminal te runnen.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+_npm run test_
 
-## Learn More
+### Custom backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+For this project their is a customer backend.
+This backend is build with Django rest-framework and is hosted on heroku.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The end point documentation can be found here:
 
-### Code Splitting
+[SWAGGER DOCS](https://notifyme-be-staging.herokuapp.com/swagger/).
+[REDOC DOCS](https://notifyme-be-staging.herokuapp.com/redoc/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# How to login
 
-### Analyzing the Bundle Size
+- Voor deze applicatie is gebruik gemaakt van Firebase en de Firebase Firestore Database. Je hebt geen inlog gegevens of wachtwoord nodig.
+- Via de registratiepagina kun je zelf een profiel aanmaken. Zgn _admin_ gegevens zijn niet nodig.
+- De registratie kan alleen lukken als de postcode **6515** wordt gebruikt bij het inputveld voor postcode en woonplaats.
+- Na registratie wordt je automatisch doorgelinkt naar je profiel pagina.
+- Zodra je bent geregistreerd of ingelogd kun je een advertenties plaatsen.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# NPM scripts
 
-### Making a Progressive Web App
+- "start": Runs the project in development mode.
+- "build": Makes a Javascript, HTML and CSS file for production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- "test": Runs the unit tests.
