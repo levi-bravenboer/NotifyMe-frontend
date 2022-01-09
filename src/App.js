@@ -51,6 +51,10 @@ function App() {
           ></Route>
           <Route element={<ProtectedRoute />}>
             <Route path="/app" element={<MainPage />}></Route>
+            <Route path="/app/me" element={<MainPage />}></Route>
+            <Route path="/app/items" element={<MainPage />}></Route>
+            <Route path="/app/item/:slug" element={<MainPage />}></Route>
+            <Route path="/app/brands" element={<MainPage />}></Route>
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Routes>
