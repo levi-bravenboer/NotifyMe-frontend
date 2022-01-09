@@ -1,36 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import NavButton from "./NavButton";
 import { Link } from "react-router-dom";
+import AuthContext from "../../Context/AuthContext";
 
 function Nav(props) {
-  const [isOpen, setIsOpen] = useState(false);
+  let authContext = useContext(AuthContext);
 
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <NavBar isOpen={isOpen}>
-      <Link to="/">
-        <Logo>
-          NOTIFY <span>me</span>
-        </Logo>
-      </Link>
+      <Logo to="/">
+        NOTIFY <span>me</span>
+      </Logo>
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
         <span />
         <span />
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
-        <Link to="/">
-          <MenuItem active={props.discover}>Discover</MenuItem>
-        </Link>
-        <Link to="/pricing">
-          <MenuItem active={props.pricing}>Pricing</MenuItem>
-        </Link>
-        <Link to="/How">
-          <MenuItem active={props.how}>How it works</MenuItem>
-        </Link>
-        <Link to="/">
-          <NavButton name="Login"></NavButton>
-        </Link>
+        <MenuItem to={"/"} active={props.discover ? 1 : 0}>
+          Discover
+        </MenuItem>
+        <MenuItem to={"/pricing/"} active={props.pricing ? 1 : 0}>
+          Pricing
+        </MenuItem>
+        <MenuItem to={"/how/"} active={props.how ? 1 : 0}>
+          How it works
+        </MenuItem>
+        <NavButton
+          onClickFunction={props.showModal}
+          type={authContext.user ? "launch" : props.type}
+          name={authContext.user ? "Launch" : "Login"}
+        ></NavButton>
       </Menu>
     </NavBar>
   );
@@ -72,28 +74,27 @@ const Hamburger = styled.div`
   }
 `;
 
-const MenuItem = styled.a`
+const MenuItem = styled(Link)`
   padding: 1rem 2rem;
   text-align: center;
   text-decoration: none;
   transition: all 0.2s ease-in;
-
+  font-size: 1.4rem;
   &:hover {
     color: var(--green-color);
   }
-
   ${({ active }) =>
     active &&
     `
     color: var(--green-color);
   `}
+
   @media (max-width: 940px) {
-    font-size: 1rem;
     padding-top: 1rem;
   }
 `;
 
-const Logo = styled.a`
+const Logo = styled(Link)`
   padding: 1rem 0;
   text-decoration: none;
   font-weight: 800;
@@ -105,7 +106,7 @@ const Logo = styled.a`
   }
 `;
 
-const Menu = styled.a`
+const Menu = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
