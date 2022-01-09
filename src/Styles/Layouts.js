@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import blueBackground from "../Img/blue_background_item.svg";
+import blueBackground from "../Assets/blue_background_item.svg";
 
 export const OuterLayout = styled.section`
   background-color: var(--outerlayout-bg-color);
@@ -34,5 +34,16 @@ export const InnerLayout = styled.section`
     right: 2.5%;
     top: 2.5%;
     bottom: 2.5%;
+  }
+`;
+
+export const AppLayout = styled.section`
+  margin: 1rem 1rem 1rem 1rem;
+  display: flex;
+  height: 97vh;
+  background: linear-gradient(to bottom right, white 0%, #e6e4ff 70%);
+  border-radius: 2rem;
+  @media screen and (min-width: 320px) and (max-width: 1080px) {
+    flex-direction: column;
   }
 `;
