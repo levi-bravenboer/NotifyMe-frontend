@@ -16,10 +16,10 @@ Ever had that special bag or coat you wanted to buy, but it is always sold out? 
 Within this webapp you can choose which item you want to follow and see all data we got from it earlier **out of stock / in stock status**.
 
 Home:
-![Home](./Assets/home_page_screenshot.png)
+![Home](./src/Assets/home_page.png)
 
 Profile page:
-![Profile](./Assets/profile_page_screenshot.png)
+![Profile](./src/Assets/user_page.png)
 
 This project is created with: [Create React App](https://github.com/facebook/create-react-app).
 
@@ -39,14 +39,6 @@ This project is created with: [Create React App](https://github.com/facebook/cre
 
 Open http://localhost:3000 in a webbrowser
 
-### Testen
-
-De unit testen zijn te vinden in de map: Tests/Register.test.js
-
-De JEST testen zijn uit te voeren door het volgende commando in de terminal te runnen.
-
-_npm run test_
-
 ### Custom backend
 
 For this project their is a customer backend.
@@ -54,16 +46,26 @@ This backend is build with Django rest-framework and is hosted on heroku.
 
 The end point documentation can be found here:
 
+When using urls from the activation email, please change the protocol in the url **https** to **http**
+
 [SWAGGER DOCS](https://notifyme-be-staging.herokuapp.com/swagger/).
 [REDOC DOCS](https://notifyme-be-staging.herokuapp.com/redoc/).
 
-# How to login
+# How to Register
 
-- Voor deze applicatie is gebruik gemaakt van Firebase en de Firebase Firestore Database. Je hebt geen inlog gegevens of wachtwoord nodig.
-- Via de registratiepagina kun je zelf een profiel aanmaken. Zgn _admin_ gegevens zijn niet nodig.
-- De registratie kan alleen lukken als de postcode **6515** wordt gebruikt bij het inputveld voor postcode en woonplaats.
-- Na registratie wordt je automatisch doorgelinkt naar je profiel pagina.
-- Zodra je bent geregistreerd of ingelogd kun je een advertenties plaatsen.
+1. Go to Login button
+2. Click the register link
+3. Fill in the form
+4. Open the activation email
+5. Copy the url an paste it in a browser, change the protocol from **https** to **http**
+
+# How to Register
+
+1. Go to Login button
+2. Click the register link
+3. Fill in the form
+4. Open the activation email
+5. Copy the url an paste it in a browser, change the protocol from **https** to **http**
 
 # NPM scripts
 
