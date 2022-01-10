@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import PasswordConfirm from "./PasswordConfirm";
 
 function AuthPopupModal(props) {
   return (
@@ -13,6 +14,9 @@ function AuthPopupModal(props) {
         </StyledCloseButton>
         {props.type === "login" ? (
           <LoginForm closeAuth={props.closeFunction}></LoginForm>
+        ) : null}
+        {props.type === "password-confirm" ? (
+          <PasswordConfirm closeAuth={props.closeFunction}></PasswordConfirm>
         ) : null}
         {props.type === "register" ? <RegisterForm></RegisterForm> : null}
       </StyledModal>
