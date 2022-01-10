@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { RiHomeLine, RiFileCopyLine, RiLogoutBoxLine } from "react-icons/ri";
 import { FaWallet } from "react-icons/fa";
-import { AiOutlinePieChart } from "react-icons/ai";
+import { AiOutlineUser, AiFillSkin } from "react-icons/ai";
 import AvatarImage from "../../Assets/round_avatar.png";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
@@ -10,30 +10,41 @@ import AuthContext from "../../Context/AuthContext";
 function Sidebar(props) {
   let navigate = useNavigate();
   let authContext = useContext(AuthContext);
-
+  let firstname = authContext.user.firstname
+    ? authContext.user.firstname
+    : "Sir/Madam.";
+  let lastname = authContext.user.lastname ? authContext.user.lastname : "";
+  let Avatar = authContext.user.userImg
+    ? authContext.user.userImg
+    : AvatarImage;
   return (
     <StyledContainer>
       <StyledProfileContainer>
-        <StyledAvatar src={AvatarImage} />
-        <StyledName>{props.userName}</StyledName>
+        <StyledAvatar src={Avatar} />
+        <StyledName>{`${firstname} ${lastname}`}</StyledName>
       </StyledProfileContainer>
       <StyledLinksContainer>
         <StyledLinks>
-          <StyledLink onClick={() => navigate("/")}>
+          <StyledLink onClick={() => navigate("/app")}>
             <RiHomeLine />
             <h3>Dashboard</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate("/")}>
+          <StyledLink onClick={() => navigate("/app/my-items")}>
             <RiFileCopyLine />
-            <h3>Projects</h3>
+            <h3>Your items</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate("/")}>
+          <StyledLink onClick={() => navigate("/app/subscriptions")}>
             <FaWallet />
-            <h3>Invoices</h3>
+            <h3>Subscriptions</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate("/")}>
-            <AiOutlinePieChart />
-            <h3>Reports</h3>
+          <StyledLink onClick={() => navigate("/app/products")}>
+            <AiFillSkin />
+
+            <h3>Products</h3>
+          </StyledLink>
+          <StyledLink onClick={() => navigate("/app/me")}>
+            <AiOutlineUser />
+            <h3>My settings</h3>
           </StyledLink>
         </StyledLinks>
         <StyledLogoutContainer onClick={() => authContext.logoutUser()}>
@@ -94,7 +105,7 @@ const StyledLinks = styled.ul`
   display: flex;
   flex-direction: column;
   padding-top: 2rem;
-  height: 60%;
+  height: 75%;
 `;
 
 const StyledLink = styled.li`
