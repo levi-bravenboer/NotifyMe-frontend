@@ -20,6 +20,8 @@ export const AuthProvider = ({ children }, props) => {
       ? jwt_decode(localStorage.getItem("authTokens"))
       : null
   );
+  // eslint-disable-next-line
+  let [userData, setUserData] = useState(false);
   let [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
@@ -35,7 +37,7 @@ export const AuthProvider = ({ children }, props) => {
           setAuthTokens(response.data);
           setUser(jwt_decode(response.data.access));
           localStorage.setItem("authTokens", JSON.stringify(response.data));
-
+          console.log("Navigate app");
           navigate("/app");
         } else {
           alert("Something went wrong!");
@@ -54,7 +56,37 @@ export const AuthProvider = ({ children }, props) => {
     setUser(null);
     localStorage.removeItem("authTokens");
   };
-
+  /**
+   *
+   */
+  let getUserData = async () => {
+    await axios
+      .get(
+        `${API_PREFIX}auth/users/${user.user_id}/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${authTokens.access}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data, "res");
+        if (response.status === 200) {
+          setLoading(false);
+          setUserData(response.data);
+        } else {
+          logoutUser();
+        }
+      })
+      .catch((error) => {
+        console.log(error.response, "err");
+        logoutUser();
+        if (loading) {
+          setLoading(false);
+        }
+      });
+  };
   /**
    * Update token
    */
@@ -106,6 +138,7 @@ export const AuthProvider = ({ children }, props) => {
     setAuthTokens: setAuthTokens,
     loginUser: loginUser,
     logoutUser: logoutUser,
+    getUserData: getUserData,
   };
 
   return (
@@ -133,6 +166,22 @@ export const registerUser = async (userData) => {
   try {
     const response = await axios.post(
       `${API_PREFIX}auth/users/`,
+      body,
+      AXIOS_CONFIG
+    );
+
+    returnResponse = { code: response.status, data: response.data };
+  } catch (error) {
+    returnResponse = { code: error.response.status, data: error.response.data };
+  }
+  return returnResponse;
+};
+
+export const confirmRegistration = async (body) => {
+  var returnResponse;
+  try {
+    const response = await axios.post(
+      `${API_PREFIX}auth/users/activation/`,
       body,
       AXIOS_CONFIG
     );
