@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Inhoudsopgave
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Introduction
+2. Lijst met benodigdheden
+3. Installatie handleiding
+4. Testen (JEST and Cypress)
+5. Inloggegevens en hoe te registreren
+6. Scripts NPM
 
-## Available Scripts
+# Introduction
 
-In the project directory, you can run:
+This README descripse the webapp for Notify me.
 
-### `npm start`
+Ever had that special bag or coat you wanted to buy, but it is always sold out? Checkout notify and subscripe to an item to get a notification from.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Within this webapp you can choose which item you want to follow and see all data we got from it earlier **out of stock / in stock status**.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Home:
+![Home](./src/Assets/home_page.png)
 
-### `npm test`
+Profile page:
+![Profile](./src/Assets/user_page.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project is created with: [Create React App](https://github.com/facebook/create-react-app).
 
-### `npm run build`
+# Needed software/accounts
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Node.js _(versie v12.18.4 of hoger)_
+2. NPM
+3. Git
+4. Google account
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# installation manual
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. open a terminal
+2. Clone the git repository.
+3. Install node_modules by running this command: **npm install**
+4. Start the application by running this command: **npm start**
 
-### `npm run eject`
+Open http://localhost:3000 in a webbrowser
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Custom backend
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For this project their is a customer backend.
+This backend is build with Django rest-framework and is hosted on heroku.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The end point documentation can be found here:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+When using urls from the activation email, please change the protocol in the url **https** to **http**
 
-## Learn More
+[SWAGGER DOCS](https://notifyme-be-staging.herokuapp.com/swagger/).
+[REDOC DOCS](https://notifyme-be-staging.herokuapp.com/redoc/).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# How to Register
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Go to Login button
+2. Click the register link
+3. Fill in the form
+4. Open the activation email
+5. Copy the url an paste it in a browser, change the protocol from **https** to **http**
 
-### Code Splitting
+# How to Register
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Go to Login button
+2. Click the register link
+3. Fill in the form
+4. Open the activation email
+5. Copy the url an paste it in a browser, change the protocol from **https** to **http**
 
-### Analyzing the Bundle Size
+# NPM scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- "start": Runs the project in development mode.
+- "build": Makes a Javascript, HTML and CSS file for production
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- "test": Runs the unit tests.
