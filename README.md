@@ -1,10 +1,10 @@
 # Inhoudsopgave
 
 1. Introduction
-2. Lijst met benodigdheden
-3. Installatie handleiding
-4. Testen (JEST and Cypress)
-5. Inloggegevens en hoe te registreren
+2. Needed software
+3. Installation manual
+4. Custom Backend
+5. How to register
 6. Scripts NPM
 
 # Introduction
@@ -59,13 +59,7 @@ When using urls from the activation email, please change the protocol in the url
 4. Open the activation email
 5. Copy the url an paste it in a browser, change the protocol from **https** to **http**
 
-# How to Register
 
-1. Go to Login button
-2. Click the register link
-3. Fill in the form
-4. Open the activation email
-5. Copy the url an paste it in a browser, change the protocol from **https** to **http**
 
 # NPM scripts
 
