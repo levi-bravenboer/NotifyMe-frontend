@@ -1,16 +1,16 @@
 import React from "react";
-import ContentDashboard from "../../Components/AppComponents/ContentDashboard";
+import ComingSoon from "../../Components/AppComponents/ComingSoon";
 import Sidebar from "../../Components/AppComponents/SideBar";
 import { AppLayout } from "../../Styles/Layouts";
 
-function MainPage() {
+function SubscriptionPage() {
   
   return (
     <AppLayout>
       <Sidebar />
-      <ContentDashboard />
+      <ComingSoon />
     </AppLayout>
   );
 }
 
-export default MainPage;
+export default SubscriptionPage;

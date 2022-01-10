@@ -28,6 +28,9 @@ const GlobalStyle = createGlobalStyle`
         color: black;
         font-size: 1.4rem;
         overflow: hidden;
+        @media (max-width: 940px) {
+            overflow: visible;
+        }
     }
 
     a{

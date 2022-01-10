@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import blueBackground from "../Assets/blue_background_item.svg";
+import blueBackground from "../Assets/handson_background.svg";
 
 export const OuterLayout = styled.section`
   background-color: var(--outerlayout-bg-color);
