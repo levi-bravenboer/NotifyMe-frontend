@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -12,6 +12,9 @@ import AuthContext from "../../Context/AuthContext";
 
 function LoginForm(props) {
   let authContext = useContext(AuthContext);
+  let [loginAuthError, setLoginAuthError] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+
   //   const [firstname, setFirstname] = useState();
   //   const [lastname, setLastname] = useState();
   //   const [email, setEmail] = useState();
@@ -37,9 +40,19 @@ function LoginForm(props) {
     validateOnBlur: false,
 
     onSubmit: (data) => {
-      console.log(JSON.stringify(data));
-      authContext.loginUser(data);
-      props.closeAuth();
+      setShowLoading(true);
+      authContext
+        .loginUser(data)
+        .then((response) => {
+          props.closeAuth();
+          setShowLoading(false);
+        })
+        .catch((error) => {
+          if (error.response.status === 401) {
+            setLoginAuthError("unauthorized");
+          }
+          setShowLoading(true);
+        });
     },
   });
 
@@ -73,8 +86,15 @@ function LoginForm(props) {
         </StyledFormErrorText>
 
         <StyledSubmitButton type="submit">Login</StyledSubmitButton>
+        <StyledFormErrorText>
+          {loginAuthError === "unauthorized"
+            ? "User credentials arent valid or user email isn't verified"
+            : null}
+        </StyledFormErrorText>
+        {showLoading ? <div id="loader">Loading...</div> : null}
 
         <StyledFormLink to="/pricing/register">Register</StyledFormLink>
+        {formik.errors.password ? formik.errors.password : null}
       </StyledForm>
     );
   }
