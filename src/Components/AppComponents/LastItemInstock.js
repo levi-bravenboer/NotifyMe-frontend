@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import AvatarImage from "../../Assets/round_avatar.png";
+import Image from "../../Assets/no_image_found.png";
 
 function LastItemInstock() {
   return (
@@ -8,24 +8,19 @@ function LastItemInstock() {
       <StyledCardContent>
         <StyledDetail>
           <InfoContainer>
-            <StyledAvatar>
-              <img src={AvatarImage} alt="" />
-            </StyledAvatar>
+            <StyledImage>
+              <img src={Image} alt="" />
+            </StyledImage>
             <Info>
-              <InfoName>Thomas Martin</InfoName>
+              <InfoName>Louis vuitton</InfoName>
               <InfoUpdate>Updated 10m ago</InfoUpdate>
             </Info>
           </InfoContainer>
         </StyledDetail>
-        <StyledTitle>
-          Need a designer to form branding essentials for my business.
-        </StyledTitle>
-        <ProjectInfo>
-          Looking for a talented brand designer to create all the branding
-          materials for my new startup.
-        </ProjectInfo>
+        <StyledTitle>Pochette accessoires mini</StyledTitle>
+
         <StyledPriceContainer>
-          <Price>$8700/month</Price>
+          <Price>€1200</Price>
         </StyledPriceContainer>
       </StyledCardContent>
     </RecommendProject>
@@ -71,7 +66,7 @@ const InfoContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-const StyledAvatar = styled.div`
+const StyledImage = styled.div`
   margin-right: 1rem;
   img {
     height: 5rem;
@@ -88,13 +83,7 @@ const InfoUpdate = styled.h5`
 const StyledTitle = styled.h4`
   font-weight: 500;
 `;
-const ProjectInfo = styled.p`
-  margin: 0;
-  padding: 0;
-  font-size: 0.9rem;
-  color: #3b3b3b;
-  margin-bottom: 0.5em;
-`;
+
 const StyledPriceContainer = styled.div`
   display: flex;
   align-items: center;
