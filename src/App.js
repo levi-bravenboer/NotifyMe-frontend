@@ -6,8 +6,14 @@ import PricingPage from "./Pages/LandingsPages/PricingPage";
 import ErrorPage from "./Pages/ErrorPage";
 import { AuthProvider } from "./Context/AuthContext";
 import AuthPopupModal from "./Components/AuthPopup/AuthPopupModal";
-import MainPage from "./Pages/AppPages/MainPage";
 import ProtectedRoute from "./Utils/ProtectedRoute";
+
+import SubscriptionPage from "./Pages/AppPages/SubscriptionPage";
+import YourItemsPage from "./Pages/AppPages/YourItemsPage";
+import MePage from "./Pages/AppPages/MePage";
+import ProductsPage from "./Pages/AppPages/ProductsPage";
+import MainPage from "./Pages/AppPages/MainPage";
+
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authModalType, setAuthModalType] = useState("");
@@ -17,7 +23,6 @@ function App() {
     setAuthModalType(type);
   };
   const closeAuthModal = () => {
-    console.log("close auth");
     setShowAuthModal(false);
   };
 
@@ -49,12 +54,20 @@ function App() {
             path=":type"
             element={<DiscoverPage showModal={openAuthModal} />}
           ></Route>
+
           <Route element={<ProtectedRoute />}>
             <Route path="/app" element={<MainPage />}></Route>
-            <Route path="/app/me" element={<MainPage />}></Route>
-            <Route path="/app/items" element={<MainPage />}></Route>
-            <Route path="/app/item/:slug" element={<MainPage />}></Route>
-            <Route path="/app/brands" element={<MainPage />}></Route>
+            <Route
+              path="/app/subscriptions"
+              element={<SubscriptionPage />}
+            ></Route>
+            <Route path="/app/my-items" element={<YourItemsPage />}></Route>
+            <Route path="/app/products" element={<ProductsPage />}></Route>
+            <Route
+              path="/app/products/:slug"
+              element={<ProductsPage />}
+            ></Route>
+            <Route path="/app/me" element={<MePage />}></Route>
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Routes>
