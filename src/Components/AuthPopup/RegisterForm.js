@@ -150,7 +150,7 @@ function RegisterForm() {
           />
           <StyledFormErrorText>
             {formik.errors.password ? formik.errors.password : null}
-            {creationErrors.password ? `${creationErrors.passwordf[0]} ` : null}
+            {creationErrors.password ? `${creationErrors.password[0]} ` : null}
           </StyledFormErrorText>
           <StyledInput
             name="repassword"
