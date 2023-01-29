@@ -7,7 +7,7 @@ import AvatarImage from "../../Assets/round_avatar.png";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
 
-function Sidebar(props) {
+function Sidebar() {
   let navigate = useNavigate();
   let authContext = useContext(AuthContext);
   let firstname = authContext.user.firstname
