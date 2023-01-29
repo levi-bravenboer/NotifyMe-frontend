@@ -40,10 +40,12 @@ const StyledModal = styled.div`
   background-color: #fefefe;
   margin: auto;
   border: 1px solid #888;
-  width: 80%;
+  width: 50%;
   min-height: 40%;
   position: relative;
-  transition: all 5s ease-in-out;
+  @media screen and (max-width: 940px) {
+    width: 80%;
+  }
 `;
 
 const StyledCloseButton = styled(Link)`
