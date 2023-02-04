@@ -65,5 +65,4 @@ When using urls from the activation email, please change the protocol in the url
 
 - "start": Runs the project in development mode.
 - "build": Makes a Javascript, HTML and CSS file for production
-
 - "test": Runs the unit tests.
