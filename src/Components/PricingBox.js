@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 function PricingBox() {
   return (
-    <StyledSection>
+    <StyledSection data-testid="pricingBoxTest">
       <StyledContainerPricing>
         <StyledPrice>
           <StyledHeader>Basic</StyledHeader>

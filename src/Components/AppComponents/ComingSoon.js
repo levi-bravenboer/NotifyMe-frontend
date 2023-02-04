@@ -8,7 +8,7 @@ function ComingSoon() {
         <StyledFirstSection>
           <ColumnTwo1>
             <StyledContainerInline>
-              <h1>COMING SOON!</h1>
+              <h1 data-testid="ComingSoonText">COMING SOON!</h1>
             </StyledContainerInline>
           </ColumnTwo1>
         </StyledFirstSection>
