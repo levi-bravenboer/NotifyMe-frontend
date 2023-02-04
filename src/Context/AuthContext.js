@@ -8,7 +8,7 @@ const AuthContext = createContext();
 
 export default AuthContext;
 
-export const AuthProvider = ({ children }, props) => {
+export const AuthProvider = ({ children }) => {
   let [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -112,6 +112,7 @@ export const AuthProvider = ({ children }, props) => {
         if (loading) {
           setLoading(false);
         }
+        console.log(error);
       });
   };
 

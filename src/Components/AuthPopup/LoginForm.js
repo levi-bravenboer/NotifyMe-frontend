@@ -43,7 +43,7 @@ function LoginForm(props) {
       setShowLoading(true);
       authContext
         .loginUser(data)
-        .then((response) => {
+        .then(() => {
           props.closeAuth();
           setShowLoading(false);
         })
