@@ -1,9 +1,8 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import dayjs from "dayjs";
-import { API_PREFIX } from "./Api";
+import { API_PREFIX, AXIOS_CONFIG } from "./Api";
 import { useContext } from "react";
-import axiosInstanceLoggedIn from "./AxiosInstance";
 import AuthContext from "../Context/AuthContext";
 
 const useAxiosLoggedIn = () => {
@@ -35,6 +34,5 @@ const useAxiosLoggedIn = () => {
 
   return axiosInstanceLoggedIn;
 };
-
 
 export default useAxiosLoggedIn;
