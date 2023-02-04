@@ -8,11 +8,10 @@ function TotalItems() {
   useEffect(() => {
     getAllItems()
       .then((items) => {
-        console.log(items);
         setApiData(items);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
 
     return () => {
