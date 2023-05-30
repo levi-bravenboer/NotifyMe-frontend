@@ -32,6 +32,16 @@ export const StyledForm = styled.form`
   min-height: 40%;
 `;
 
+export const StyledLoader = styled.form`
+  display: flex;
+  align-items: center;
+`;
+export const StyledLoadingGif = styled.img`
+  width: 2.5rem;
+  height: auto;
+  align-items: center;
+`;
+
 export const StyledFormLink = styled(Link)`
   display: right;
   text-align: right;
