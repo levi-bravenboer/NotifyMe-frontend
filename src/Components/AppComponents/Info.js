@@ -32,7 +32,7 @@ function Info() {
 
 const StyledInfoCard = styled.div`
   height: 100%;
-  width: 14rem;
+  width: 18rem;
   background-color: white;
   border-radius: 1rem;
   padding: 1rem;

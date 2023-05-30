@@ -33,44 +33,41 @@ function App() {
           <Route
             path="/"
             element={<DiscoverPage showModal={openAuthModal} />}
-          ></Route>
+          />
           <Route
             path="/pricing/"
             element={<PricingPage showModal={openAuthModal} />}
-          ></Route>
-          <Route
-            path="/how/"
-            element={<HowPage showModal={openAuthModal} />}
-          ></Route>
+          />
+          <Route path="/how/" element={<HowPage showModal={openAuthModal} />} />
           <Route
             path="/pricing/:type"
             element={<PricingPage showModal={openAuthModal} />}
-          ></Route>
+          />
           <Route
             path="/how/:type"
             element={<HowPage showModal={openAuthModal} />}
-          ></Route>
+          />
           <Route
             path=":type"
             element={<DiscoverPage showModal={openAuthModal} />}
-          ></Route>
+          />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/app" element={<MainPage />}></Route>
+            <Route path="/app" element={<MainPage />} />
             <Route
               path="/app/subscriptions"
               element={<SubscriptionPage />}
-            ></Route>
-            <Route path="/app/my-items" element={<YourItemsPage />}></Route>
-            <Route path="/app/products" element={<ProductsPage />}></Route>
-            <Route
-              path="/app/products/:slug"
-              element={<ProductsPage />}
-            ></Route>
-            <Route path="/app/me" element={<MePage />}></Route>
+              title="Notify me - subscriptions"
+            />
+            <Route path="/app/my-items" element={<YourItemsPage />} />
+            <Route path="/app/products" element={<ProductsPage />} />
+            <Route path="/app/products/:slug" element={<ProductsPage />} />
+            <Route path="/app/me" element={<MePage />} />
           </Route>
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+
         {showAuthModal ? (
           <AuthPopupModal
             type={authModalType}
