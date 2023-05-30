@@ -7,20 +7,17 @@ import {
   StyledSubmitButton,
   StyledFormLink,
   StyledFormErrorText,
+  StyledLoadingGif,
+  StyledLoader,
 } from "../../Styles/PopupModalStyles";
+import loadingGif from "../../Assets/Loading_icon.gif";
+
 import AuthContext from "../../Context/AuthContext";
 
 function LoginForm(props) {
   let authContext = useContext(AuthContext);
   let [loginAuthError, setLoginAuthError] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
-
-  //   const [firstname, setFirstname] = useState();
-  //   const [lastname, setLastname] = useState();
-  //   const [email, setEmail] = useState();
-  //   const [phone, setPhone] = useState();
-  //   const [password, setPassword] = useState();
-  //   const [repassword, setRepassword] = useState();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().required("Email is required").email("Email is invalid"),
@@ -91,7 +88,11 @@ function LoginForm(props) {
             ? "User credentials arent valid or user email isn't verified"
             : null}
         </StyledFormErrorText>
-        {showLoading ? <div id="loader">Loading...</div> : null}
+        {showLoading ? (
+          <StyledLoader id="loader">
+            Loading <StyledLoadingGif src={loadingGif} />
+          </StyledLoader>
+        ) : null}
 
         <StyledFormLink to="/pricing/register">Register</StyledFormLink>
         {formik.errors.password ? formik.errors.password : null}
