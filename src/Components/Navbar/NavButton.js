@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function NavButton(props) {
   let navigate = useNavigate();

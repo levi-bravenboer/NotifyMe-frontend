@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }) => {
           setAuthTokens(response.data);
           setUser(jwt_decode(response.data.access));
           localStorage.setItem("authTokens", JSON.stringify(response.data));
-          console.log("Navigate app");
           navigate("/app");
         } else {
           alert("Something went wrong!");
@@ -56,8 +55,9 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem("authTokens");
   };
+
   /**
-   *
+   * Get User data
    */
   let getUserData = async () => {
     await axios
@@ -71,7 +71,6 @@ export const AuthProvider = ({ children }) => {
         }
       )
       .then((response) => {
-        console.log(response.data, "res");
         if (response.status === 200) {
           setLoading(false);
           setUserData(response.data);
@@ -80,7 +79,7 @@ export const AuthProvider = ({ children }) => {
         }
       })
       .catch((error) => {
-        console.log(error.response, "err");
+        console.error(error.response, "err");
         logoutUser();
         if (loading) {
           setLoading(false);
@@ -112,7 +111,7 @@ export const AuthProvider = ({ children }) => {
         if (loading) {
           setLoading(false);
         }
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -163,7 +162,7 @@ export const registerUser = async (userData) => {
     password: userData.password,
     re_password: userData.repassword,
   };
-  var returnResponse;
+
   try {
     const response = await axios.post(
       `${API_PREFIX}auth/users/`,
@@ -171,15 +170,13 @@ export const registerUser = async (userData) => {
       AXIOS_CONFIG
     );
 
-    returnResponse = { code: response.status, data: response.data };
+    return { code: response.status, data: response.data };
   } catch (error) {
-    returnResponse = { code: error.response.status, data: error.response.data };
+    return { code: error.response.status, data: error.response.data };
   }
-  return returnResponse;
 };
 
 export const confirmRegistration = async (body) => {
-  var returnResponse;
   try {
     const response = await axios.post(
       `${API_PREFIX}auth/users/activation/`,
@@ -187,9 +184,8 @@ export const confirmRegistration = async (body) => {
       AXIOS_CONFIG
     );
 
-    returnResponse = { code: response.status, data: response.data };
+    return { code: response.status, data: response.data };
   } catch (error) {
-    returnResponse = { code: error.response.status, data: error.response.data };
+    return { code: error.response.status, data: error.response.data };
   }
-  return returnResponse;
 };

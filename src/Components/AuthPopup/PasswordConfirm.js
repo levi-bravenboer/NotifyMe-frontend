@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyledPopupModal } from "../../Styles/PopupModalStyles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { confirmRegistration } from "../../Context/AuthContext";
-import { useSearchParams } from "react-router-dom";
 
 function PasswordConfirm() {
   const [counter, setCounter] = useState(10);
@@ -14,18 +13,18 @@ function PasswordConfirm() {
     if (!error && counter) {
       counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
       if (counter === 1) navigate("/login");
-    }
-    return () => {
+    } else {
       setCounter(10);
-    };
+    }
+    return () => {};
   }, [counter]);
 
-  useEffect(() => {
+  useEffect(async () => {
     const uid = searchParams.get("uid");
     const token = searchParams.get("token");
     const data = { uid, token };
 
-    confirmRegistration(data)
+    await confirmRegistration(data)
       .then((result) => {
         if (result.code === 403) setError(true);
       })
@@ -33,7 +32,6 @@ function PasswordConfirm() {
         setError(true);
         return Promise.reject(error);
       });
-
     return () => {
       setCounter(10);
       setError(false);
@@ -44,6 +42,7 @@ function PasswordConfirm() {
     fontSize: "4vw",
     marginTop: "5%",
   };
+
   if (error) {
     return (
       <StyledPopupModal>
