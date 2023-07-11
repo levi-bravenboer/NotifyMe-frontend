@@ -55,8 +55,9 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem("authTokens");
   };
+
   /**
-   *
+   * Get User data
    */
   let getUserData = async () => {
     await axios
