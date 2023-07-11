@@ -15,10 +15,10 @@ Ever had that special bag or coat you wanted to buy, but it is always sold out? 
 
 Within this webapp you can choose which item you want to follow and see all data we got from it earlier **out of stock / in stock status**.
 
-Home:
+**Home:**
 ![Home](./src/Assets/home_page.png)
 
-Profile page:
+**Profile page:**
 ![Profile](./src/Assets/user_page.png)
 
 This project is created with: [Create React App](https://github.com/facebook/create-react-app).
@@ -65,4 +65,3 @@ When using urls from the activation email, please change the protocol in the url
 
 - "start": Runs the project in development mode.
 - "build": Makes a Javascript, HTML and CSS file for production
-- "test": Runs the unit tests.
