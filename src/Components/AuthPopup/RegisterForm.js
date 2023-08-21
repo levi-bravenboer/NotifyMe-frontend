@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -17,14 +17,6 @@ function RegisterForm() {
   const [showLoading, setShowLoading] = useState(false);
   const [userIsCreated, setUserIsCreated] = useState(false);
   const [creationErrors, setCreationErrors] = useState(false);
-
-  useEffect(() => {
-    return () => {
-      setCreationErrors(false);
-      setUserIsCreated(false);
-      setShowLoading(false);
-    };
-  }, []);
 
   const validationSchema = Yup.object().shape({
     firstname: Yup.string().required("Fullname is required"),
@@ -59,22 +51,18 @@ function RegisterForm() {
 
     onSubmit: async (data) => {
       setShowLoading(true);
-
-      registerUser(data)
-        .then((result) => {
-          if (result.code === 201) {
-            setUserIsCreated(true);
-          } else if (result.code === 400) {
-            setCreationErrors(result.data);
-          } else {
-            setCreationErrors("Looks like something went wrong, try again");
-          }
-        })
-        .then(() => setShowLoading(false))
-
-        .catch((error) => {
-          return Promise.reject(error);
-        });
+      try {
+        const result = await registerUser(data);
+        if (result.code === 201) {
+          setUserIsCreated(true);
+        } else if (result.code === 400) {
+          setCreationErrors(result.data);
+        } else {
+          setCreationErrors("Looks like something went wrong, try again");
+        }
+      } catch (error) {
+        return Promise.reject(error);
+      }
     },
   });
 
@@ -107,7 +95,7 @@ function RegisterForm() {
             placeholder="Firstname"
           />
           <StyledFormErrorText>
-            {formik.errors.firstname ? formik.errors.firstname : null}
+            {formik.errors.firstname && formik.errors.firstname}
           </StyledFormErrorText>
           <StyledInput
             name="lastname"
@@ -117,7 +105,7 @@ function RegisterForm() {
             placeholder="Lastname"
           />
           <StyledFormErrorText>
-            {formik.errors.lastname ? formik.errors.lastname : null}
+            {formik.errors.lastname && formik.errors.lastname}
           </StyledFormErrorText>
           <StyledInput
             name="email"
@@ -127,8 +115,8 @@ function RegisterForm() {
             placeholder="Email"
           />
           <StyledFormErrorText>
-            {formik.errors.email ? formik.errors.email : null}
-            {creationErrors.email ? `${creationErrors.email[0]} ` : null}
+            {formik.errors.email && formik.errors.email}
+            {creationErrors.email && `${creationErrors.email[0]} `}
           </StyledFormErrorText>
           <StyledInput
             name="phone"
@@ -138,8 +126,8 @@ function RegisterForm() {
             placeholder="Phonenumber"
           />
           <StyledFormErrorText>
-            {formik.errors.phone ? formik.errors.phone : null}
-            {creationErrors.phone ? creationErrors.phone[0] : null}
+            {formik.errors.phone && formik.errors.phone}
+            {creationErrors.phone && creationErrors.phone[0]}
           </StyledFormErrorText>
           <StyledInput
             name="password"
@@ -149,8 +137,8 @@ function RegisterForm() {
             placeholder="Password"
           />
           <StyledFormErrorText>
-            {formik.errors.password ? formik.errors.password : null}
-            {creationErrors.password ? `${creationErrors.password[0]} ` : null}
+            {formik.errors.password && formik.errors.password}
+            {creationErrors.password && `${creationErrors.password[0]} `}
           </StyledFormErrorText>
           <StyledInput
             name="repassword"
@@ -161,13 +149,13 @@ function RegisterForm() {
             placeholder="Repeat password"
           />
           <StyledFormErrorText>
-            {formik.errors.repassword ? formik.errors.repassword : null}
+            {formik.errors.repassword && formik.errors.repassword}
           </StyledFormErrorText>
           <StyledSubmitButton type="submit">Register</StyledSubmitButton>
-          {showLoading ? <div id="loader">Loading...</div> : null}
+          {showLoading && <div id="loader">Loading...</div>}
           <StyledFormLink to="/pricing/login">Login</StyledFormLink>
           <StyledFormErrorText>
-            {creationErrors.general ? creationErrors.general : null}
+            {creationErrors.general && creationErrors.general}
           </StyledFormErrorText>
         </StyledForm>
       );

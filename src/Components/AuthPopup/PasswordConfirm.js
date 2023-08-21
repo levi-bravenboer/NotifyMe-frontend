@@ -16,26 +16,19 @@ function PasswordConfirm() {
     } else {
       setCounter(10);
     }
-    return () => {};
   }, [counter]);
 
   useEffect(async () => {
     const uid = searchParams.get("uid");
     const token = searchParams.get("token");
     const data = { uid, token };
-
-    await confirmRegistration(data)
-      .then((result) => {
-        if (result.code === 403) setError(true);
-      })
-      .catch((error) => {
-        setError(true);
-        return Promise.reject(error);
-      });
-    return () => {
-      setCounter(10);
-      setError(false);
-    };
+    try {
+      const result = await confirmRegistration(data);
+      if (result.code === 403) setError(true);
+    } catch (e) {
+      setError(true);
+      return Promise.reject(error);
+    }
   }, []);
 
   const h1Style = {

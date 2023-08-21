@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
 
 function Nav(props) {
-  let authContext = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
 
   const [isOpen, setIsOpen] = useState(false);
   return (

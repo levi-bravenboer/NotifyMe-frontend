@@ -6,17 +6,16 @@ function TotalItems() {
   const [apiData, setApiData] = useState([]);
 
   useEffect(() => {
-    getAllItems()
-      .then((items) => {
-        setApiData(items);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    return () => {
-      setApiData([]);
+    const fetchData = async () => {
+      let items = [];
+      try {
+        items = await getAllItems();
+      } catch (e) {
+        console.error(e);
+      }
+      return items;
     };
+    setApiData(fetchData());
   }, []);
 
   return (

@@ -7,17 +7,18 @@ function NewItems() {
   const [apiData, setApiData] = useState([]);
 
   useEffect(() => {
-    getAllItems()
-      .then((items) => {
+    const fetchData = async () => {
+      let items = [];
+      try {
+        items = await getAllItems();
         setApiData(items);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    return () => {
-      setApiData([]);
+      } catch (e) {
+        console.error(e);
+      }
+      return items;
     };
+
+    setApiData(fetchData());
   }, []);
 
   if (apiData) {

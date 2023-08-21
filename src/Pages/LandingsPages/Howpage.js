@@ -15,7 +15,6 @@ function HowPage(props) {
     ) {
       props.showModal(params.type);
     }
-    return () => {};
   }, [params.type]);
   return (
     <OuterLayout>

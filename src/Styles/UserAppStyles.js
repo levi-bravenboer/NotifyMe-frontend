@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export const StyledSubContainer = styled.div`
   margin: 0.5rem 0;
   height: 80%;
@@ -9,4 +11,3 @@ export const StyledSubContainer = styled.div`
     height: 100%;
   }
 `;
-

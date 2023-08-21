@@ -15,7 +15,6 @@ function DiscoverPage(props) {
     ) {
       props.showModal(params.type);
     }
-    return () => {};
   }, [params.type]);
 
   return (
