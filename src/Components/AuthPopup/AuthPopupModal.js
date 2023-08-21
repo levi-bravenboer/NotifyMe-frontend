@@ -12,13 +12,13 @@ function AuthPopupModal(props) {
         <StyledCloseButton to={"/"} onClick={props.closeFunction}>
           &times;
         </StyledCloseButton>
-        {props.type === "login" ? (
+        {props.type === "login" && (
           <LoginForm closeAuth={props.closeFunction}></LoginForm>
-        ) : null}
-        {props.type === "password-confirm" ? (
+        )}
+        {props.type === "password-confirm" && (
           <PasswordConfirm closeAuth={props.closeFunction}></PasswordConfirm>
-        ) : null}
-        {props.type === "register" ? <RegisterForm></RegisterForm> : null}
+        )}
+        {props.type === "register" && <RegisterForm></RegisterForm>}
       </StyledModal>
     </StyledModalOverlay>
   );

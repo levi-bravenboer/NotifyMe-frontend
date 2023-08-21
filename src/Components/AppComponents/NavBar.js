@@ -5,8 +5,8 @@ import AuthContext from "../../Context/AuthContext";
 
 function NavBar() {
   const [partOfDay, setPartOfDay] = useState("evening");
-  let authContext = useContext(AuthContext);
-  let firstname = authContext.user.firstname
+  const authContext = useContext(AuthContext);
+  const firstname = authContext.user.firstname
     ? authContext.user.firstname
     : "Sir/Madam.";
 

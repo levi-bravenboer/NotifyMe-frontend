@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function NavButton(props) {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   if (!location.pathname) {
     location.pathname = "";

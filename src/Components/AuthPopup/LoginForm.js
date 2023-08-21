@@ -15,8 +15,8 @@ import loadingGif from "../../Assets/Loading_icon.gif";
 import AuthContext from "../../Context/AuthContext";
 
 function LoginForm(props) {
-  let authContext = useContext(AuthContext);
-  let [loginAuthError, setLoginAuthError] = useState(false);
+  const authContext = useContext(AuthContext);
+  const [loginAuthError, setLoginAuthError] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
 
   const validationSchema = Yup.object().shape({
@@ -36,20 +36,18 @@ function LoginForm(props) {
     validateOnChange: false,
     validateOnBlur: false,
 
-    onSubmit: (data) => {
+    onSubmit: async (data) => {
       setShowLoading(true);
-      authContext
-        .loginUser(data)
-        .then(() => {
-          props.closeAuth();
-          setShowLoading(false);
-        })
-        .catch((error) => {
-          if (error.response.status === 401) {
-            setLoginAuthError("unauthorized");
-          }
-          setShowLoading(true);
-        });
+      try {
+        await authContext.loginUser(data);
+        props.closeAuth();
+        setShowLoading(false);
+      } catch (error) {
+        if (error.response.status === 401) {
+          setLoginAuthError("unauthorized");
+        }
+        setShowLoading(true);
+      }
     },
   });
 
@@ -68,7 +66,7 @@ function LoginForm(props) {
           placeholder="Email"
         />
         <StyledFormErrorText>
-          {formik.errors.email ? formik.errors.email : null}
+          {formik.errors.email && formik.errors.email}
         </StyledFormErrorText>
 
         <StyledInput
@@ -79,23 +77,22 @@ function LoginForm(props) {
           placeholder="Password"
         />
         <StyledFormErrorText>
-          {formik.errors.password ? formik.errors.password : null}
+          {formik.errors.password && formik.errors.password}
         </StyledFormErrorText>
 
         <StyledSubmitButton type="submit">Login</StyledSubmitButton>
         <StyledFormErrorText>
-          {loginAuthError === "unauthorized"
-            ? "User credentials arent valid or user email isn't verified"
-            : null}
+          {loginAuthError === "unauthorized" &&
+            "User credentials arent valid or user email isn't verified"}
         </StyledFormErrorText>
-        {showLoading ? (
+        {showLoading && (
           <StyledLoader id="loader">
             Loading <StyledLoadingGif src={loadingGif} />
           </StyledLoader>
-        ) : null}
+        )}
 
         <StyledFormLink to="/pricing/register">Register</StyledFormLink>
-        {formik.errors.password ? formik.errors.password : null}
+        {formik.errors.password && formik.errors.password}
       </StyledForm>
     );
   }

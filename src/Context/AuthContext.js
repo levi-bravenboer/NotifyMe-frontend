@@ -9,48 +9,49 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  let [authTokens, setAuthTokens] = useState(() =>
-    localStorage.getItem("authTokens")
-      ? JSON.parse(localStorage.getItem("authTokens"))
-      : null
+  const [authTokens, setAuthTokens] = useState(
+    localStorage.getItem("authTokens") &&
+      JSON.parse(localStorage.getItem("authTokens"))
   );
 
-  let [user, setUser] = useState(() =>
-    localStorage.getItem("authTokens")
-      ? jwt_decode(localStorage.getItem("authTokens"))
-      : null
+  const [user, setUser] = useState(
+    localStorage.getItem("authTokens") &&
+      jwt_decode(localStorage.getItem("authTokens"))
   );
   // eslint-disable-next-line
-  let [userData, setUserData] = useState(false);
-  let [loading, setLoading] = useState(false);
-  let navigate = useNavigate();
+  const [userData, setUserData] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   /**
    * User login
    * @param {*} e
    */
-  let loginUser = async (body) => {
-    await axios
-      .post(`${API_PREFIX}auth/jwt/create/`, body, AXIOS_CONFIG)
-      .then((response) => {
-        if (response.status === 200) {
-          setAuthTokens(response.data);
-          setUser(jwt_decode(response.data.access));
-          localStorage.setItem("authTokens", JSON.stringify(response.data));
-          navigate("/app");
-        } else {
-          alert("Something went wrong!");
-        }
-      })
-      .catch((error) => {
-        return Promise.reject(error);
-      });
+  const loginUser = async (body) => {
+    try {
+      const response = await axios.post(
+        `${API_PREFIX}auth/jwt/create/`,
+        body,
+        AXIOS_CONFIG
+      );
+
+      if (response.status === 200) {
+        setAuthTokens(response.data);
+        setUser(jwt_decode(response.data.access));
+        localStorage.setItem("authTokens", JSON.stringify(response.data));
+        navigate("/app");
+      } else {
+        alert("Something went wrong!");
+      }
+    } catch (error) {
+      return Promise.reject(error);
+    }
   };
 
   /**
    * Lets user logout
    */
-  let logoutUser = () => {
+  const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);
     localStorage.removeItem("authTokens");
@@ -59,70 +60,69 @@ export const AuthProvider = ({ children }) => {
   /**
    * Get User data
    */
-  let getUserData = async () => {
-    await axios
-      .get(
+  const getUserData = async () => {
+    try {
+      const response = await axios.get(
         `${API_PREFIX}auth/users/${user.user_id}/`,
-        {},
         {
           headers: {
             Authorization: `Bearer ${authTokens.access}`,
           },
         }
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          setLoading(false);
-          setUserData(response.data);
-        } else {
-          logoutUser();
-        }
-      })
-      .catch((error) => {
-        console.error(error.response, "err");
+      );
+
+      if (response.status === 200) {
+        setLoading(false);
+        setUserData(response.data);
+      } else {
         logoutUser();
-        if (loading) {
-          setLoading(false);
-        }
-      });
+      }
+    } catch (error) {
+      console.error(error.response, "err");
+      logoutUser();
+      if (loading) {
+        setLoading(false);
+      }
+    }
   };
   /**
    * Update token
    */
-  let updateToken = async () => {
-    let body = {
+  const updateToken = async () => {
+    const body = {
       refresh: authTokens ? authTokens.refresh : "",
     };
 
-    await axios
-      .post(`${API_PREFIX}auth/jwt/refresh/`, body, AXIOS_CONFIG)
-      .then((response) => {
-        if (response.status === 200) {
-          setLoading(false);
-          setAuthTokens(response.data);
-          setUser(jwt_decode(response.data.access));
-          localStorage.setItem("authTokens", JSON.stringify(response.data));
-        } else {
-          logoutUser();
-        }
-      })
-      .catch((error) => {
+    try {
+      const response = await axios.post(
+        `${API_PREFIX}auth/jwt/refresh/`,
+        body,
+        AXIOS_CONFIG
+      );
+
+      if (response.status === 200) {
+        setLoading(false);
+        setAuthTokens(response.data);
+        setUser(jwt_decode(response.data.access));
+        localStorage.setItem("authTokens", JSON.stringify(response.data));
+      } else {
         logoutUser();
-        if (loading) {
-          setLoading(false);
-        }
-        console.error(error);
-      });
+      }
+    } catch (error) {
+      logoutUser();
+      if (loading) {
+        setLoading(false);
+      }
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    if (loading) {
-      updateToken();
-    }
+    if (loading) updateToken();
 
-    let fourMinutes = 1000 * 60 * 4;
+    const fourMinutes = 1000 * 60 * 4;
 
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       if (authTokens) {
         updateToken();
       }
@@ -131,7 +131,7 @@ export const AuthProvider = ({ children }) => {
   }, [authTokens, loading]);
 
   //Exported and accessible functions/variable when using useContext on AuthContext
-  let contextData = {
+  const contextData = {
     user: user,
     setUser: setUser,
     authTokens: authTokens,
@@ -143,7 +143,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={contextData}>
-      {loading ? null : children}
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

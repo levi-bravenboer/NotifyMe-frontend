@@ -8,20 +8,22 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
 
 function Sidebar() {
-  let navigate = useNavigate();
-  let authContext = useContext(AuthContext);
-  let firstname = authContext.user.firstname
-    ? authContext.user.firstname
-    : "Sir/Madam.";
-  let lastname = authContext.user.lastname ? authContext.user.lastname : "";
-  let Avatar = authContext.user.userImg
-    ? authContext.user.userImg
-    : AvatarImage;
+  const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
+
+  const { user } = authContext;
+  const userData = {
+    ...user,
+    firstname: user.firstname || "Sir/Madam.",
+    lastname: user.lastname || "",
+    avatar: user.userImg || AvatarImage,
+  };
+
   return (
     <StyledContainer>
       <StyledProfileContainer>
-        <StyledAvatar src={Avatar} />
-        <StyledName>{`${firstname} ${lastname}`}</StyledName>
+        <StyledAvatar src={userData.avatar} />
+        <StyledName>{`${userData.firstname} ${userData.lastname}`}</StyledName>
       </StyledProfileContainer>
       <StyledLinksContainer>
         <StyledLinks>

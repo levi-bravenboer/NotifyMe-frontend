@@ -68,12 +68,12 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
 
-        {showAuthModal ? (
+        {showAuthModal && (
           <AuthPopupModal
             type={authModalType}
             closeFunction={closeAuthModal}
           ></AuthPopupModal>
-        ) : null}
+        )}
       </AuthProvider>
     </Router>
   );
