@@ -8,11 +8,11 @@ import { AuthProvider } from "./Context/AuthContext";
 import AuthPopupModal from "./Components/AuthPopup/AuthPopupModal";
 import ProtectedRoute from "./Utils/ProtectedRoute";
 
-import SubscriptionPage from "./Pages/AppPages/SubscriptionPage";
 import YourItemsPage from "./Pages/AppPages/YourItemsPage";
 import MePage from "./Pages/AppPages/MePage";
 import ProductsPage from "./Pages/AppPages/ProductsPage";
 import MainPage from "./Pages/AppPages/MainPage";
+import CostCalculatorPage from "./Pages/AppPages/CostCalculatorPage";
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -55,9 +55,9 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/app" element={<MainPage />} />
             <Route
-              path="/app/subscriptions"
-              element={<SubscriptionPage />}
-              title="Notify me - subscriptions"
+              path="/app/cost-calculator"
+              element={<CostCalculatorPage />}
+              title="Notify me - Cost Calculator"
             />
             <Route path="/app/my-items" element={<YourItemsPage />} />
             <Route path="/app/products" element={<ProductsPage />} />

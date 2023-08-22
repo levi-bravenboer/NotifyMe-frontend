@@ -59,8 +59,6 @@ When using urls from the activation email, please change the protocol in the url
 4. Open the activation email
 5. Copy the url an paste it in a browser, change the protocol from **https** to **http**
 
-
-
 # NPM scripts
 
 - "start": Runs the project in development mode.
