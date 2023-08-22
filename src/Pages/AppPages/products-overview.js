@@ -27,7 +27,7 @@ function ProductsPage() {
   }, []);
 
   const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchValue.toLowerCase())
+    product.name.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
   const columns = [

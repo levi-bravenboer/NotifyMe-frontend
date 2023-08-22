@@ -19,6 +19,34 @@ function Sidebar() {
     avatar: user.userImg || AvatarImage,
   };
 
+  const navItems = [
+    {
+      title: "Dashboard",
+      navigationPath: "/app",
+      icon: RiHomeLine,
+    },
+    {
+      title: "Your items",
+      navigationPath: "/app/my-items",
+      icon: RiFileCopyLine,
+    },
+    {
+      title: "Cost Calculator",
+      navigationPath: "/app/cost-calculator",
+      icon: FaWallet,
+    },
+    {
+      title: "Products",
+      navigationPath: "/app/products",
+      icon: AiFillSkin,
+    },
+    {
+      title: "My settings",
+      navigationPath: "/app/me",
+      icon: AiOutlineUser,
+    },
+  ];
+
   return (
     <StyledContainer>
       <StyledProfileContainer>
@@ -27,23 +55,24 @@ function Sidebar() {
       </StyledProfileContainer>
       <StyledLinksContainer>
         <StyledLinks>
-          <StyledLink onClick={() => navigate('/app')}>
+          <StyledLink onClick={() => navigate("/app")}>
             <RiHomeLine />
             <h3>Dashboard</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate('/app/products')}>
-            <AiFillSkin />
-            <h3>Products</h3>
-          </StyledLink>
-          <StyledLink onClick={() => navigate('/app/my-items')}>
+          <StyledLink onClick={() => navigate("/app/my-items")}>
             <RiFileCopyLine />
             <h3>Your items</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate('/app/subscriptions')}>
+          <StyledLink onClick={() => navigate("/app/subscriptions")}>
             <FaWallet />
             <h3>Subscriptions</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate('/app/me')}>
+          <StyledLink onClick={() => navigate("/app/products")}>
+            <AiFillSkin />
+
+            <h3>Products</h3>
+          </StyledLink>
+          <StyledLink onClick={() => navigate("/app/me")}>
             <AiOutlineUser />
             <h3>My settings</h3>
           </StyledLink>

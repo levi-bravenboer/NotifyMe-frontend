@@ -52,6 +52,11 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/app" element={<MainPage />} />
             <Route path="/app/subscriptions" element={<SubscriptionPage />} />
+            <Route
+              path="/app/cost-calculator"
+              element={<CostCalculatorPage />}
+              title="Notify me - Cost Calculator"
+            />
             <Route path="/app/my-items" element={<YourItemsPage />} />
             <Route path="/app/products" element={<ProductsPage />} />
             <Route path="/app/products/:slug" element={<ProductsPage />} />

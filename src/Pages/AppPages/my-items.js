@@ -1,7 +1,7 @@
 import React from 'react';
 import ComingSoon from '../../Components/AppComponents/ComingSoon';
 import Sidebar from '../../Components/AppComponents/SideBar';
-import { AppLayout } from '../../Styles/Layouts';
+import { AppLayout } from '../../Styles/layouts';
 
 function YourItemsPage() {
   return (

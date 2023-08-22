@@ -9,7 +9,7 @@ import {
   StyledFormErrorText,
   StyledLoadingGif,
   StyledLoader,
-} from '../../Styles/PopupModalStyles';
+} from '../../Styles/popup-modal-styles';
 import loadingGif from '../../Assets/Loading_icon.gif';
 
 import AuthContext from '../../Context/auth-context';

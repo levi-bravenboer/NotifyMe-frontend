@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { OuterLayout, InnerLayout } from '../../Styles/Layouts';
+import { OuterLayout, InnerLayout } from '../../Styles/layouts';
 import Nav from '../../Components/Navbar/nav';
 import PricingBox from '../../Components/pricing-box';
 

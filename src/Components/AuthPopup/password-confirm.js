@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { StyledPopupModal } from '../../Styles/PopupModalStyles';
+import { StyledPopupModal } from '../../Styles/popup-modal-styles';
 import { confirmRegistration } from '../../Context/auth-context';
 
 function PasswordConfirm() {
