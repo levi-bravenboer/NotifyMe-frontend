@@ -44,14 +44,15 @@
       "last 1 safari version"
     ]
   },
-    "lint-staged": {
-      "src/**/*.{js,jsx,ts,tsx}": [
-        "eslint --fix",
-        "prettier --write"
-      ]
-    },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.5.0",
     "eslint": "^8.57.1",
