@@ -1,18 +1,18 @@
-import React from "react";
-import styled from "styled-components";
-import { useLocation, useNavigate } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function NavButton(props) {
   const navigate = useNavigate();
   const location = useLocation();
   if (!location.pathname) {
-    location.pathname = "";
+    location.pathname = '';
   }
   const handleClick = () => {
-    if (props.type === "launch") {
-      navigate("/app");
+    if (props.type === 'launch') {
+      navigate('/app');
     } else {
-      props.onClickFunction("login");
+      props.onClickFunction('login');
       navigate(`${location.pathname}login`);
     }
   };
@@ -20,7 +20,7 @@ function NavButton(props) {
 }
 
 const NavButtonStyled = styled.a`
-  font-family: "Avenir Next", sans-serif !important;
+  font-family: 'Avenir Next', sans-serif !important;
 
   background-color: transparent;
   padding: 0.6rem 2.2rem;

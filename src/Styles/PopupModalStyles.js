@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const StyledInput = styled.input`
   margin-top: 2vh;
@@ -62,12 +62,12 @@ export const StyledPopupModal = styled.div`
 
 export const StyledFormErrorText = styled.div`
   color: red;
-  font-family: "Inter";
-  font-style: "normal";
-  font-weight: "normal";
+  font-family: 'Inter';
+  font-style: 'normal';
+  font-weight: 'normal';
   font-size: 0.8rem;
   color: red;
-  white-space: "pre-wrap";
+  white-space: 'pre-wrap';
   padding-left: 16px;
   padding-top: 4px;
 `;

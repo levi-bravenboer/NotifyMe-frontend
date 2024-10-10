@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 function NavButton({ text, onClick }) {
   return <ButtonStyled onClick={onClick}>{text}</ButtonStyled>;
 }
 
 const ButtonStyled = styled.a`
-  font-family: "Avenir Next", sans-serif !important;
+  font-family: 'Avenir Next', sans-serif !important;
 
   background-color: transparent;
   padding: 0.6rem 2.2rem;

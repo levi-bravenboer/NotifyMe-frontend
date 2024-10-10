@@ -1,24 +1,24 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
-import PasswordConfirm from "./PasswordConfirm";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
+import PasswordConfirm from './PasswordConfirm';
 
 function AuthPopupModal(props) {
   return (
     <StyledModalOverlay>
       <StyledModal>
-        <StyledCloseButton to={"/"} onClick={props.closeFunction}>
+        <StyledCloseButton to={'/'} onClick={props.closeFunction}>
           &times;
         </StyledCloseButton>
-        {props.type === "login" && (
+        {props.type === 'login' && (
           <LoginForm closeAuth={props.closeFunction}></LoginForm>
         )}
-        {props.type === "password-confirm" && (
+        {props.type === 'password-confirm' && (
           <PasswordConfirm closeAuth={props.closeFunction}></PasswordConfirm>
         )}
-        {props.type === "register" && <RegisterForm></RegisterForm>}
+        {props.type === 'register' && <RegisterForm></RegisterForm>}
       </StyledModal>
     </StyledModalOverlay>
   );

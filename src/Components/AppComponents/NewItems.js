@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import noAvatarImage from "../../Assets/no_image_found.png";
-import { getAllItems } from "../../Utils/ApiCalls";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import noAvatarImage from '../../Assets/no_image_found.png';
+import { getAllItems } from '../../Utils/ApiCalls';
 
 function NewItems() {
   const [apiData, setApiData] = useState([]);
@@ -39,15 +39,15 @@ function NewItems() {
               </StyledAvatar>
               <TextContainer>
                 <StyledTitle>
-                  {apiData[0] ? apiData[0].name : "Placeholder"}
+                  {apiData[0] ? apiData[0].name : 'Placeholder'}
                 </StyledTitle>
                 <StyledSubTitle>
-                  {apiData[0] ? apiData[0].color : "Placeholder"}
+                  {apiData[0] ? apiData[0].color : 'Placeholder'}
                 </StyledSubTitle>
               </TextContainer>
             </Info>
             <Container>
-              <Price>{`€ ${apiData[0] ? apiData[0].price : "0.00"}`}</Price>
+              <Price>{`€ ${apiData[0] ? apiData[0].price : '0.00'}`}</Price>
             </Container>
           </Invoice>
           <Invoice>
@@ -62,15 +62,15 @@ function NewItems() {
               </StyledAvatar>
               <TextContainer>
                 <StyledTitle>
-                  {apiData[1] ? apiData[1].name : "Placeholder"}
+                  {apiData[1] ? apiData[1].name : 'Placeholder'}
                 </StyledTitle>
                 <StyledSubTitle>
-                  {apiData[1] ? apiData[1].color : "Placeholder"}
+                  {apiData[1] ? apiData[1].color : 'Placeholder'}
                 </StyledSubTitle>
               </TextContainer>
             </Info>
             <Container>
-              <Price>{`€ ${apiData[1] ? apiData[1].price : "0.00"}`}</Price>
+              <Price>{`€ ${apiData[1] ? apiData[1].price : '0.00'}`}</Price>
             </Container>
           </Invoice>
         </CardContent>
@@ -87,7 +87,8 @@ const InvoicesContainer = styled.div`
   margin-top: 1rem;
   background-color: white;
   height: 140%;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   transition: 0.4s ease-in-out;
   &:hover {

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 function Info() {
   return (
@@ -37,7 +37,8 @@ const StyledInfoCard = styled.div`
   border-radius: 1rem;
   padding: 1rem;
   color: white;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   transition: 0.4s ease-in-out;
   &:hover {

@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { RiHomeLine, RiFileCopyLine, RiLogoutBoxLine } from "react-icons/ri";
-import { FaWallet } from "react-icons/fa";
-import { AiOutlineUser, AiFillSkin } from "react-icons/ai";
-import AvatarImage from "../../Assets/round_avatar.png";
-import { useNavigate } from "react-router-dom";
-import AuthContext from "../../Context/AuthContext";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { RiHomeLine, RiFileCopyLine, RiLogoutBoxLine } from 'react-icons/ri';
+import { FaWallet } from 'react-icons/fa';
+import { AiOutlineUser, AiFillSkin } from 'react-icons/ai';
+import AvatarImage from '../../Assets/round_avatar.png';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../Context/AuthContext';
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -14,8 +14,8 @@ function Sidebar() {
   const { user } = authContext;
   const userData = {
     ...user,
-    firstname: user.firstname || "Sir/Madam.",
-    lastname: user.lastname || "",
+    firstname: user.firstname || 'Sir/Madam.',
+    lastname: user.lastname || '',
     avatar: user.userImg || AvatarImage,
   };
 
@@ -27,24 +27,24 @@ function Sidebar() {
       </StyledProfileContainer>
       <StyledLinksContainer>
         <StyledLinks>
-          <StyledLink onClick={() => navigate("/app")}>
+          <StyledLink onClick={() => navigate('/app')}>
             <RiHomeLine />
             <h3>Dashboard</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate("/app/my-items")}>
+          <StyledLink onClick={() => navigate('/app/my-items')}>
             <RiFileCopyLine />
             <h3>Your items</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate("/app/subscriptions")}>
+          <StyledLink onClick={() => navigate('/app/subscriptions')}>
             <FaWallet />
             <h3>Subscriptions</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate("/app/products")}>
+          <StyledLink onClick={() => navigate('/app/products')}>
             <AiFillSkin />
 
             <h3>Products</h3>
           </StyledLink>
-          <StyledLink onClick={() => navigate("/app/me")}>
+          <StyledLink onClick={() => navigate('/app/me')}>
             <AiOutlineUser />
             <h3>My settings</h3>
           </StyledLink>

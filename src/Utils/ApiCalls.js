@@ -1,5 +1,5 @@
-import axios from "axios";
-import { API_PREFIX, AXIOS_CONFIG } from "./Api";
+import axios from 'axios';
+import { API_PREFIX, AXIOS_CONFIG } from './Api';
 
 export const getAllItems = async () => {
   try {

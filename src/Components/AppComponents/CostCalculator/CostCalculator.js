@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import Dropdown from "./Dropdown";
+import React from 'react';
+import styled from 'styled-components';
+import Dropdown from './Dropdown';
 
 function CostCalculator() {
   return (

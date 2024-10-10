@@ -1,8 +1,8 @@
-import React from "react";
-import { OuterLayout, InnerLayout } from "../Styles/Layouts";
-import Nav from "../Components/Navbar/Nav";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { OuterLayout, InnerLayout } from '../Styles/Layouts';
+import Nav from '../Components/Navbar/Nav';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 function ErrorPage(props) {
   const params = useParams();

@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import React, { useContext, useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import {
   StyledForm,
   StyledInput,
@@ -9,10 +9,10 @@ import {
   StyledFormErrorText,
   StyledLoadingGif,
   StyledLoader,
-} from "../../Styles/PopupModalStyles";
-import loadingGif from "../../Assets/Loading_icon.gif";
+} from '../../Styles/PopupModalStyles';
+import loadingGif from '../../Assets/Loading_icon.gif';
 
-import AuthContext from "../../Context/AuthContext";
+import AuthContext from '../../Context/AuthContext';
 
 function LoginForm(props) {
   const authContext = useContext(AuthContext);
@@ -20,17 +20,17 @@ function LoginForm(props) {
   const [showLoading, setShowLoading] = useState(false);
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().required("Email is required").email("Email is invalid"),
+    email: Yup.string().required('Email is required').email('Email is invalid'),
     password: Yup.string()
-      .required("Password is required")
-      .min(6, "Password must be at least 6 characters")
-      .max(40, "Password must not exceed 40 characters"),
+      .required('Password is required')
+      .min(6, 'Password must be at least 6 characters')
+      .max(40, 'Password must not exceed 40 characters'),
   });
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
     validationSchema,
     validateOnChange: false,
@@ -44,7 +44,7 @@ function LoginForm(props) {
         setShowLoading(false);
       } catch (error) {
         if (error.response.status === 401) {
-          setLoginAuthError("unauthorized");
+          setLoginAuthError('unauthorized');
         }
         setShowLoading(true);
       }
@@ -82,7 +82,7 @@ function LoginForm(props) {
 
         <StyledSubmitButton type="submit">Login</StyledSubmitButton>
         <StyledFormErrorText>
-          {loginAuthError === "unauthorized" &&
+          {loginAuthError === 'unauthorized' &&
             "User credentials arent valid or user email isn't verified"}
         </StyledFormErrorText>
         {showLoading && (
