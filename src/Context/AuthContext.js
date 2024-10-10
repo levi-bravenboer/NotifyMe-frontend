@@ -1,8 +1,8 @@
-import React, { createContext, useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { API_PREFIX, AXIOS_CONFIG } from "../Utils/Api";
+import React, { createContext, useState, useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { API_PREFIX, AXIOS_CONFIG } from '../Utils/Api';
 
 const AuthContext = createContext();
 
@@ -10,13 +10,13 @@ export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(
-    localStorage.getItem("authTokens") &&
-      JSON.parse(localStorage.getItem("authTokens"))
+    localStorage.getItem('authTokens') &&
+      JSON.parse(localStorage.getItem('authTokens'))
   );
 
   const [user, setUser] = useState(
-    localStorage.getItem("authTokens") &&
-      jwt_decode(localStorage.getItem("authTokens"))
+    localStorage.getItem('authTokens') &&
+      jwtDecode(localStorage.getItem('authTokens'))
   );
   // eslint-disable-next-line
   const [userData, setUserData] = useState(false);
@@ -37,11 +37,11 @@ export const AuthProvider = ({ children }) => {
 
       if (response.status === 200) {
         setAuthTokens(response.data);
-        setUser(jwt_decode(response.data.access));
-        localStorage.setItem("authTokens", JSON.stringify(response.data));
-        navigate("/app");
+        setUser(jwtDecode(response.data.access));
+        localStorage.setItem('authTokens', JSON.stringify(response.data));
+        navigate('/app');
       } else {
-        alert("Something went wrong!");
+        alert('Something went wrong!');
       }
     } catch (error) {
       return Promise.reject(error);
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
   const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);
-    localStorage.removeItem("authTokens");
+    localStorage.removeItem('authTokens');
   };
 
   /**
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
         logoutUser();
       }
     } catch (error) {
-      console.error(error.response, "err");
+      console.error(error.response, 'err');
       logoutUser();
       if (loading) {
         setLoading(false);
@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
    */
   const updateToken = async () => {
     const body = {
-      refresh: authTokens ? authTokens.refresh : "",
+      refresh: authTokens ? authTokens.refresh : '',
     };
 
     try {
@@ -103,8 +103,8 @@ export const AuthProvider = ({ children }) => {
       if (response.status === 200) {
         setLoading(false);
         setAuthTokens(response.data);
-        setUser(jwt_decode(response.data.access));
-        localStorage.setItem("authTokens", JSON.stringify(response.data));
+        setUser(jwtDecode(response.data.access));
+        localStorage.setItem('authTokens', JSON.stringify(response.data));
       } else {
         logoutUser();
       }

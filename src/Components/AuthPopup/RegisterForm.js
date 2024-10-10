@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import {
   StyledForm,
   StyledInput,
@@ -8,10 +8,10 @@ import {
   StyledFormLink,
   StyledFormErrorText,
   StyledPopupModal,
-} from "../../Styles/PopupModalStyles";
-import { phoneRegExp } from "../../Utils/Validators";
-import { registerUser } from "../../Context/AuthContext";
-import emailSendImg from "../../Assets/email_send_img.png";
+} from '../../Styles/PopupModalStyles';
+import { phoneRegExp } from '../../Utils/Validators';
+import { registerUser } from '../../Context/AuthContext';
+import emailSendImg from '../../Assets/email_send_img.png';
 
 function RegisterForm() {
   const [showLoading, setShowLoading] = useState(false);
@@ -19,31 +19,31 @@ function RegisterForm() {
   const [creationErrors, setCreationErrors] = useState(false);
 
   const validationSchema = Yup.object().shape({
-    firstname: Yup.string().required("Fullname is required"),
-    lastname: Yup.string().required("Lastname is required"),
+    firstname: Yup.string().required('Fullname is required'),
+    lastname: Yup.string().required('Lastname is required'),
     phone: Yup.string()
       .matches(
         phoneRegExp,
         "Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
       )
-      .required("Phonenumber is required"),
-    email: Yup.string().required("Email is required").email("Email is invalid"),
+      .required('Phonenumber is required'),
+    email: Yup.string().required('Email is required').email('Email is invalid'),
     password: Yup.string()
-      .required("Password is required")
-      .min(8, "Password must be at least 8 characters")
-      .max(40, "Password must not exceed 40 characters"),
+      .required('Password is required')
+      .min(8, 'Password must be at least 8 characters')
+      .max(40, 'Password must not exceed 40 characters'),
     repassword: Yup.string()
-      .required("Confirm Password is required")
-      .oneOf([Yup.ref("password"), null], "Confirm Password does not match"),
+      .required('Confirm Password is required')
+      .oneOf([Yup.ref('password'), null], 'Confirm Password does not match'),
   });
 
   const formik = useFormik({
     initialValues: {
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      repassword: "",
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      repassword: '',
     },
     validationSchema,
     validateOnChange: false,
@@ -58,7 +58,7 @@ function RegisterForm() {
         } else if (result.code === 400) {
           setCreationErrors(result.data);
         } else {
-          setCreationErrors("Looks like something went wrong, try again");
+          setCreationErrors('Looks like something went wrong, try again');
         }
       } catch (error) {
         return Promise.reject(error);
@@ -68,12 +68,12 @@ function RegisterForm() {
 
   const setHtmlOnState = () => {
     const imgStyle = {
-      height: "auto",
-      width: "80%",
+      height: 'auto',
+      width: '80%',
     };
     const h1Style = {
-      fontSize: "4vw",
-      marginTop: "5%",
+      fontSize: '4vw',
+      marginTop: '5%',
     };
 
     if (userIsCreated) {

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 function ComingSoon() {
   return (
@@ -23,7 +23,8 @@ const StyledContainerInline = styled.div`
   margin: 0;
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   transition: 0.4s ease-in-out;
   &:hover {

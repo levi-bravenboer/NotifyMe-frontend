@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { IoStatsChart } from "react-icons/io5";
-import { getAllItems } from "../../Utils/ApiCalls";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { IoStatsChart } from 'react-icons/io5';
+import { getAllItems } from '../../Utils/ApiCalls';
 function TotalItems() {
   const [apiData, setApiData] = useState([]);
 

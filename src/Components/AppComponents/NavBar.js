@@ -1,21 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
-import styled from "styled-components";
-import dayjs from "dayjs";
-import AuthContext from "../../Context/AuthContext";
+import React, { useState, useEffect, useContext } from 'react';
+import styled from 'styled-components';
+import dayjs from 'dayjs';
+import AuthContext from '../../Context/AuthContext';
 
 function NavBar() {
-  const [partOfDay, setPartOfDay] = useState("evening");
+  const [partOfDay, setPartOfDay] = useState('evening');
   const authContext = useContext(AuthContext);
   const firstname = authContext.user.firstname
     ? authContext.user.firstname
-    : "Sir/Madam.";
+    : 'Sir/Madam.';
 
   useEffect(() => {
     const currentHour = dayjs().hour();
     if (currentHour < 12) {
-      setPartOfDay("morning");
+      setPartOfDay('morning');
     } else if (currentHour < 18) {
-      setPartOfDay("afternoon");
+      setPartOfDay('afternoon');
     }
   }, []);
 

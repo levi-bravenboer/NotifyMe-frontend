@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
-import styled from "styled-components";
-import NavButton from "./NavButton";
-import { Link } from "react-router-dom";
-import AuthContext from "../../Context/AuthContext";
+import React, { useState, useContext } from 'react';
+import styled from 'styled-components';
+import NavButton from './NavButton';
+import { Link } from 'react-router-dom';
+import AuthContext from '../../Context/AuthContext';
 
 function Nav(props) {
   const authContext = useContext(AuthContext);
@@ -19,19 +19,19 @@ function Nav(props) {
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
-        <MenuItem to={"/"} active={props.discover ? 1 : 0}>
+        <MenuItem to={'/'} active={props.discover ? 1 : 0}>
           Discover
         </MenuItem>
-        <MenuItem to={"/pricing/"} active={props.pricing ? 1 : 0}>
+        <MenuItem to={'/pricing/'} active={props.pricing ? 1 : 0}>
           Pricing
         </MenuItem>
-        <MenuItem to={"/how/"} active={props.how ? 1 : 0}>
+        <MenuItem to={'/how/'} active={props.how ? 1 : 0}>
           How it works
         </MenuItem>
         <NavButton
           onClickFunction={props.showModal}
-          type={authContext.user ? "launch" : props.type}
-          name={authContext.user ? "Launch" : "Login"}
+          type={authContext.user ? 'launch' : props.type}
+          name={authContext.user ? 'Launch' : 'Login'}
         ></NavButton>
       </Menu>
     </NavBar>
@@ -52,7 +52,7 @@ const NavBar = styled.div`
     border-radius: 8px;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: ${({ isOpen }) => isOpen && "var(--cool-blue)"};
+    background-color: ${({ isOpen }) => isOpen && 'var(--cool-blue)'};
     transition: all 0.2s ease-in-out;
   }
 `;
@@ -116,7 +116,7 @@ const Menu = styled.div`
     overflow: hidden;
     flex-direction: column;
     width: 100%;
-    max-height: ${({ isOpen }) => (isOpen ? "300px" : "0px")};
+    max-height: ${({ isOpen }) => (isOpen ? '300px' : '0px')};
     transition: all 0.2s ease-in-out;
   }
 `;

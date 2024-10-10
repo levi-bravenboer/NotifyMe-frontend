@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import FontAwesome from "react-fontawesome";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import FontAwesome from 'react-fontawesome';
 
 function Dropdown({ list, isOpen, headerTitle, onSelect }) {
   const [listOpen, setListOpen] = useState(false);
@@ -46,7 +46,7 @@ function Dropdown({ list, isOpen, headerTitle, onSelect }) {
 }
 
 const DropdownWrapper = styled.div`
-  font-family: "Avenir Next", sans-serif !important;
+  font-family: 'Avenir Next', sans-serif !important;
 `;
 
 export default Dropdown;

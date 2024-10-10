@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import NoImageFound from "../../Assets/no_image_found.png";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import NoImageFound from '../../Assets/no_image_found.png';
+import { Link } from 'react-router-dom';
 
 function YourItems() {
   return (
@@ -15,7 +15,7 @@ function YourItems() {
           <StyledSubTitle>0 day remaining</StyledSubTitle>
         </StyledDetail>
       </StyledProject>
-      <StyledLink to={"/app/my-items"}>See all your items</StyledLink>
+      <StyledLink to={'/app/my-items'}>See all your items</StyledLink>
     </StyledContainer>
   );
 }
@@ -26,7 +26,8 @@ const StyledContainer = styled.div`
   margin: 0;
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   transition: 0.4s ease-in-out;
   &:hover {
