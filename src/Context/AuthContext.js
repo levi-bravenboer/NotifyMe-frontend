@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { API_PREFIX, AXIOS_CONFIG } from '../Utils/Api';
+import { apiInstance } from '../Utils/Api';
 
 const AuthContext = createContext();
 
@@ -18,7 +17,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.getItem('authTokens') &&
       jwtDecode(localStorage.getItem('authTokens'))
   );
-  // eslint-disable-next-line
   const [userData, setUserData] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -29,11 +27,7 @@ export const AuthProvider = ({ children }) => {
    */
   const loginUser = async (body) => {
     try {
-      const response = await axios.post(
-        `${API_PREFIX}auth/jwt/create/`,
-        body,
-        AXIOS_CONFIG
-      );
+      const response = await apiInstance.post(`/auth/jwt/create/`, body);
 
       if (response.status === 200) {
         setAuthTokens(response.data);
@@ -62,14 +56,11 @@ export const AuthProvider = ({ children }) => {
    */
   const getUserData = async () => {
     try {
-      const response = await axios.get(
-        `${API_PREFIX}auth/users/${user.user_id}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${authTokens.access}`,
-          },
-        }
-      );
+      const response = await apiInstance.get(`/auth/users/${user.user_id}/`, {
+        headers: {
+          Authorization: `Bearer ${authTokens.access}`,
+        },
+      });
 
       if (response.status === 200) {
         setLoading(false);
@@ -94,11 +85,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     try {
-      const response = await axios.post(
-        `${API_PREFIX}auth/jwt/refresh/`,
-        body,
-        AXIOS_CONFIG
-      );
+      const response = await apiInstance.post(`/auth/jwt/refresh/`, body);
 
       if (response.status === 200) {
         setLoading(false);
@@ -160,15 +147,12 @@ export const registerUser = async (userData) => {
     lastname: userData.lastname,
     phone: userData.phone,
     password: userData.password,
+    // eslint-disable-next-line camelcase
     re_password: userData.repassword,
   };
 
   try {
-    const response = await axios.post(
-      `${API_PREFIX}auth/users/`,
-      body,
-      AXIOS_CONFIG
-    );
+    const response = await apiInstance.post(`/auth/users/`, body);
 
     return { code: response.status, data: response.data };
   } catch (error) {
@@ -178,11 +162,7 @@ export const registerUser = async (userData) => {
 
 export const confirmRegistration = async (body) => {
   try {
-    const response = await axios.post(
-      `${API_PREFIX}auth/users/activation/`,
-      body,
-      AXIOS_CONFIG
-    );
+    const response = await apiInstance.post(`/auth/users/activation/`, body);
 
     return { code: response.status, data: response.data };
   } catch (error) {
