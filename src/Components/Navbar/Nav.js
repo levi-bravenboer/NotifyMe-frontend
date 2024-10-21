@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
-import NavButton from './NavButton';
 import { Link } from 'react-router-dom';
+import NavButton from './NavButton';
 import AuthContext from '../../Context/AuthContext';
 
 function Nav(props) {
@@ -19,17 +19,17 @@ function Nav(props) {
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
-        <MenuItem to={'/'} active={props.discover ? 1 : 0}>
+        <MenuItem to={'/'} active={!!props.discover}>
           Discover
         </MenuItem>
-        <MenuItem to={'/pricing/'} active={props.pricing ? 1 : 0}>
+        <MenuItem to={'/pricing/'} active={!!props.pricing}>
           Pricing
         </MenuItem>
-        <MenuItem to={'/how/'} active={props.how ? 1 : 0}>
+        <MenuItem to={'/how/'} active={!!props.how}>
           How it works
         </MenuItem>
         <NavButton
-          onClickFunction={props.showModal}
+          onClick={props.showModal}
           type={authContext.user ? 'launch' : props.type}
           name={authContext.user ? 'Launch' : 'Login'}
         ></NavButton>
@@ -83,11 +83,7 @@ const MenuItem = styled(Link)`
   &:hover {
     color: var(--green-color);
   }
-  ${({ active }) =>
-    active &&
-    `
-    color: var(--green-color);
-  `}
+  color: ${({ active }) => (active ? 'var(--green-color)' : 'inherit')};
 
   @media (max-width: 940px) {
     padding-top: 1rem;

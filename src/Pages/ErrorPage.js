@@ -1,16 +1,16 @@
 import React from 'react';
-import { OuterLayout, InnerLayout } from '../Styles/Layouts';
-import Nav from '../Components/Navbar/Nav';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { OuterLayout, InnerLayout } from '../Styles/Layouts';
+import Nav from '../Components/Navbar/Nav';
 
 function ErrorPage(props) {
-  const params = useParams();
+  const { type } = useParams();
 
   return (
     <OuterLayout>
       <InnerLayout>
-        <Nav showModal={props.showModal} type={params.type} />
+        <Nav showModal={props.showModal} type={type} />
         <StyledErrorText>404 page not found</StyledErrorText>
       </InnerLayout>
     </OuterLayout>

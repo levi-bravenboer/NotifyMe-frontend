@@ -1,28 +1,38 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:prettier/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-        "jsx": true
-    },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "rules": {
-        "react/prop-types": "off",
-        "prettier/prettier": ["error", { "endOfLine": "auto" }],
-        "react/react-in-jsx-scope": "off"
-    },
-    "settings": {
-        "react": {
-        "version": "detect"
-        }
-    }
-}  
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:prettier/recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 12,
+		"sourceType": "module"
+	},
+	"plugins": ["import"],
+	"rules": {
+		"react/prop-types": "off",
+		"prettier/prettier": ["error", { "endOfLine": "auto" }],
+		"react/react-in-jsx-scope": "off",
+		"import/order": [
+			"error",
+			{ "groups": ["builtin", "external", "internal"] }
+		],
+		"camelcase": "error",
+		"new-cap": "error",
+		"no-underscore-dangle": "error",
+		"prefer-template": "error"
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
+}

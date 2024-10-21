@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { RiHomeLine, RiFileCopyLine, RiLogoutBoxLine } from 'react-icons/ri';
 import { FaWallet } from 'react-icons/fa';
 import { AiOutlineUser, AiFillSkin } from 'react-icons/ai';
-import AvatarImage from '../../Assets/round_avatar.png';
 import { useNavigate } from 'react-router-dom';
+import AvatarImage from '../../Assets/round_avatar.png';
 import AuthContext from '../../Context/AuthContext';
 
 function Sidebar() {
@@ -31,6 +31,10 @@ function Sidebar() {
             <RiHomeLine />
             <h3>Dashboard</h3>
           </StyledLink>
+          <StyledLink onClick={() => navigate('/app/products')}>
+            <AiFillSkin />
+            <h3>Products</h3>
+          </StyledLink>
           <StyledLink onClick={() => navigate('/app/my-items')}>
             <RiFileCopyLine />
             <h3>Your items</h3>
@@ -38,11 +42,6 @@ function Sidebar() {
           <StyledLink onClick={() => navigate('/app/subscriptions')}>
             <FaWallet />
             <h3>Subscriptions</h3>
-          </StyledLink>
-          <StyledLink onClick={() => navigate('/app/products')}>
-            <AiFillSkin />
-
-            <h3>Products</h3>
           </StyledLink>
           <StyledLink onClick={() => navigate('/app/me')}>
             <AiOutlineUser />
@@ -52,8 +51,8 @@ function Sidebar() {
         <StyledLogoutContainer onClick={() => authContext.logoutUser()}>
           <span>
             <RiLogoutBoxLine />
+            Logout
           </span>
-          <p>Logout</p>
         </StyledLogoutContainer>
       </StyledLinksContainer>
     </StyledContainer>
@@ -106,12 +105,13 @@ const StyledLinks = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding-top: 2rem;
   height: 75%;
 `;
 
 const StyledLink = styled.li`
-  margin-left: 25%;
+  margin-left: 20%;
   margin-bottom: 2rem;
   display: flex;
   gap: 1rem;
@@ -142,12 +142,10 @@ const StyledLogoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  justify-content: center;
+
   &:hover {
     cursor: pointer;
-  }
-  p {
-    color: white;
-    text-decoration: none;
   }
 
   @media screen and (min-width: 320px) and (max-width: 1080px) {

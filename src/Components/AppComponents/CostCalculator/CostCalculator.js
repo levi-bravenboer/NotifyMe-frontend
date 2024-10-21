@@ -5,7 +5,7 @@ import Dropdown from './Dropdown';
 function CostCalculator() {
   return (
     <StyledContainer>
-      <Dropdown onClick="console.log('test')" text="test" />
+      <Dropdown onClick={console.log('test')} text="test" />
     </StyledContainer>
   );
 }

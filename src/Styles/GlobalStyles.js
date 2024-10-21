@@ -1,15 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
     :root {
     --outerlayout-bg-color: hsl(54, 63%, 91%);
     --innerlayout-bg-color: #FFFEF6;
     --green-color: hsla(158, 99%, 43%, 1);
     --cool-blue: #D6FFFC;
-
-
-
-
     }
 
     *{

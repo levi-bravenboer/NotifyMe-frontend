@@ -12,7 +12,7 @@ function NavButton(props) {
     if (props.type === 'launch') {
       navigate('/app');
     } else {
-      props.onClickFunction('login');
+      props.onClick('login');
       navigate(`${location.pathname}login`);
     }
   };
@@ -29,10 +29,8 @@ const NavButtonStyled = styled.a`
   border-radius: 12px;
   border: 1px solid black;
 
-  :hover {
-    border: 1px solid var(--green-color);
-    color: var(--green-color);
-    transition: all 0.2s ease-in;
+  &:hover {
+    cursor: pointer;
   }
 `;
 
