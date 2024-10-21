@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DiscoverPage from './Pages/LandingsPages/DiscoverPage';
-import HowPage from './Pages/LandingsPages/Howpage';
-import PricingPage from './Pages/LandingsPages/PricingPage';
-import ErrorPage from './Pages/ErrorPage';
 import { AuthProvider } from './Context/AuthContext';
 import AuthPopupModal from './Components/AuthPopup/AuthPopupModal';
 import ProtectedRoute from './Utils/ProtectedRoute';
 
+import DiscoverPage from './Pages/LandingsPages/DiscoverPage';
+import HowPage from './Pages/LandingsPages/Howpage';
+import PricingPage from './Pages/LandingsPages/PricingPage';
 import SubscriptionPage from './Pages/AppPages/SubscriptionPage';
 import YourItemsPage from './Pages/AppPages/YourItemsPage';
 import MePage from './Pages/AppPages/MePage';
 import ProductsPage from './Pages/AppPages/ProductsPage';
 import MainPage from './Pages/AppPages/MainPage';
+import ErrorPage from './Pages/ErrorPage';
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -21,9 +21,6 @@ function App() {
   const openAuthModal = (type) => {
     setShowAuthModal(true);
     setAuthModalType(type);
-  };
-  const closeAuthModal = () => {
-    setShowAuthModal(false);
   };
 
   return (
@@ -35,10 +32,10 @@ function App() {
             element={<DiscoverPage showModal={openAuthModal} />}
           />
           <Route
-            path="/pricing/"
+            path="/pricing"
             element={<PricingPage showModal={openAuthModal} />}
           />
-          <Route path="/how/" element={<HowPage showModal={openAuthModal} />} />
+          <Route path="/how" element={<HowPage showModal={openAuthModal} />} />
           <Route
             path="/pricing/:type"
             element={<PricingPage showModal={openAuthModal} />}
@@ -54,11 +51,7 @@ function App() {
 
           <Route element={<ProtectedRoute />}>
             <Route path="/app" element={<MainPage />} />
-            <Route
-              path="/app/subscriptions"
-              element={<SubscriptionPage />}
-              title="Notify me - subscriptions"
-            />
+            <Route path="/app/subscriptions" element={<SubscriptionPage />} />
             <Route path="/app/my-items" element={<YourItemsPage />} />
             <Route path="/app/products" element={<ProductsPage />} />
             <Route path="/app/products/:slug" element={<ProductsPage />} />
@@ -71,8 +64,8 @@ function App() {
         {showAuthModal && (
           <AuthPopupModal
             type={authModalType}
-            closeFunction={closeAuthModal}
-          ></AuthPopupModal>
+            closeFunction={() => setShowAuthModal(false)}
+          />
         )}
       </AuthProvider>
     </Router>
