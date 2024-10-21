@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { OuterLayout, InnerLayout } from '../../Styles/Layouts';
-import Nav from '../../Components/Navbar/Nav';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { OuterLayout, InnerLayout } from '../../Styles/Layouts';
+import Nav from '../../Components/Navbar/Nav';
 
 function DiscoverPage(props) {
   const params = useParams();

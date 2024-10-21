@@ -1,14 +1,9 @@
-import axios from 'axios';
-import { API_PREFIX, AXIOS_CONFIG } from './Api';
+import { authApi } from './Api';
 
 export const getAllItems = async () => {
   try {
-    const items = await axios.get(
-      `${API_PREFIX}items/items/all/`,
-      {},
-      AXIOS_CONFIG
-    );
-    return items.data;
+    const { data } = await authApi.get('items/all/');
+    return data;
   } catch (e) {
     console.error(e);
     return [];

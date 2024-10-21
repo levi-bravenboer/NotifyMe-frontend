@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import NoImageFound from '../../Assets/no_image_found.png';
 import { Link } from 'react-router-dom';
+import NoImageFound from '../../Assets/no_image_found.png';
 
 function YourItems() {
   return (
