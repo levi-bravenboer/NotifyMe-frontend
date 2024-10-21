@@ -1,30 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BiPlus } from 'react-icons/bi';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import DataTable from '../../Components/AppComponents/Datatable/Datatable';
 import { AppLayout } from '../../Styles/Layouts';
 import { getAllItems } from '../../Utils/ApiCalls';
 import Button from '../../Components/AppComponents/Button/Button';
+import Input from '../../Components/AppComponents/Input/Input';
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let items = await getAllItems();
-        items = items.map((product) => {
-          const priceFormatted = new Intl.NumberFormat('en-IE', {
-            style: 'currency',
-            currency: 'EUR',
-          }).format(product.price);
-
-          return {
-            ...product,
-            priceFormatted,
-          };
-        });
+        const items = await getAllItems();
         setProducts(items);
       } catch (error) {
         console.error('Error fetching items:', error);
@@ -33,6 +25,10 @@ function ProductsPage() {
 
     fetchData();
   }, []);
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   const columns = [
     { Header: 'Name', accessor: 'name' },
@@ -46,13 +42,22 @@ function ProductsPage() {
       <Sidebar />
       <StyledContainer>
         <StyledHeader>
-          <h1>Products</h1>
-          <StyledButton>
-            <StyledIcon />
-            <span>Request product</span>
-          </StyledButton>
+          <LeftSection>
+            <h1>Products</h1>
+            <StyledButton>
+              <StyledIcon />
+              <span>Request product</span>
+            </StyledButton>
+          </LeftSection>
+          <Input
+            type="text"
+            placeholder="Search"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            icon={FaMagnifyingGlass}
+          />
         </StyledHeader>
-        <DataTable columns={columns} data={products} />
+        <DataTable columns={columns} data={filteredProducts} />
       </StyledContainer>
     </AppLayout>
   );
@@ -67,8 +72,15 @@ const StyledContainer = styled.div`
 
 const StyledHeader = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+`;
+
+const LeftSection = styled.div`
+  display: flex;
   gap: 1rem;
-  padding-left: 1rem;
+  align-items: center;
 `;
 
 const StyledButton = styled(Button)`
@@ -83,4 +95,5 @@ const StyledIcon = styled(BiPlus)`
   position: relative;
   top: -0.1em;
 `;
+
 export default ProductsPage;
