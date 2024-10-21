@@ -10,7 +10,7 @@
 6. [Code Formatting & Linting](#code-formatting-and-linting)
 7. [Using NVM for Node.js](#using-nvm-for-nodejs)
 8. [NPM Scripts](#npm-scripts)
-9. [Product Owner](#product-owner)
+9. [Project Owner](#product-owner)
 
 ---
 
@@ -195,7 +195,7 @@ Here are the key NPM scripts available for this project:
 
 ---
 
-## Product Owner
+## Project Owner
 
 This project was created and is maintained by **Levi Bravenboer**.
 
