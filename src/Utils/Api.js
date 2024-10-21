@@ -33,3 +33,15 @@ authApi.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+// Add response interceptor
+authApi.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem('authTokens');
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
+  }
+);
