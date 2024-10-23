@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Button from '../../Components/AppComponents/Button/Button';
 import Datatable from '../../Components/AppComponents/Datatable/Datatable';
 import Input from '../../Components/AppComponents/Input/Input';
+import Sheet from '../../Components/AppComponents/Sheet/Sheet';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import { AppLayout } from '../../Styles/Layouts';
 import { getAllItems } from '../../Utils/Items';
@@ -12,6 +13,7 @@ import { getAllItems } from '../../Utils/Items';
 function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +39,14 @@ function ProductsPage() {
     { Header: 'Status', accessor: 'acceptance_status' },
   ];
 
+  const handleOpenSheet = () => {
+    setSheetOpen(true);
+  };
+
+  const handleCloseSheet = () => {
+    setSheetOpen(false);
+  };
+
   return (
     <AppLayout>
       <Sidebar />
@@ -44,7 +54,7 @@ function ProductsPage() {
         <StyledHeader>
           <LeftSection>
             <h1>Products</h1>
-            <StyledButton>
+            <StyledButton onClick={handleOpenSheet}>
               <StyledIcon />
               <span>Request product</span>
             </StyledButton>
@@ -58,6 +68,11 @@ function ProductsPage() {
           />
         </StyledHeader>
         <Datatable columns={columns} data={filteredProducts} />
+        <DataTable columns={columns} data={filteredProducts} />
+        <Sheet isOpen={sheetOpen} onClose={handleCloseSheet}>
+          <h2>Request Product</h2>
+          {/* TODO: add the fields for requestiong the product */}
+        </Sheet>
       </StyledContainer>
     </AppLayout>
   );

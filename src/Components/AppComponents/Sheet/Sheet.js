@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { IoClose } from 'react-icons/io5';
+import styled from 'styled-components';
 
 const Sheet = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
