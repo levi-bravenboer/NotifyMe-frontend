@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { BiPlus } from 'react-icons/bi';
-import { FaMagnifyingGlass } from 'react-icons/fa6';
+import { FaMagnifyingGlass, FaLink, FaShirt } from 'react-icons/fa6';
 import styled from 'styled-components';
 import Button from '../../Components/AppComponents/Button/Button';
+import DataTable from '../../Components/AppComponents/Datatable/Datatable';
 import Datatable from '../../Components/AppComponents/Datatable/Datatable';
 import Input from '../../Components/AppComponents/Input/Input';
 import Sheet from '../../Components/AppComponents/Sheet/Sheet';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import { AppLayout } from '../../Styles/Layouts';
-import { getAllItems } from '../../Utils/Items';
+import { getAllItems } from '../../Utils/ApiCalls';
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [product, setProduct] = useState({ name: '', link: '' });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +29,13 @@ function ProductsPage() {
 
     fetchData();
   }, []);
+
+  const setProductByKey = (key, value) => {
+    setProduct((prevProduct) => ({
+      ...prevProduct,
+      [key]: value,
+    }));
+  };
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -46,6 +55,13 @@ function ProductsPage() {
   const handleCloseSheet = () => {
     setSheetOpen(false);
   };
+
+  const handleRequest = async () => {
+    console.log('Product Name:', product.name);
+    console.log('Product Link:', product.link);
+  };
+
+  const canRequest = () => product.name && product.link;
 
   return (
     <AppLayout>
@@ -70,8 +86,30 @@ function ProductsPage() {
         <Datatable columns={columns} data={filteredProducts} />
         <DataTable columns={columns} data={filteredProducts} />
         <Sheet isOpen={sheetOpen} onClose={handleCloseSheet}>
-          <h2>Request Product</h2>
-          {/* TODO: add the fields for requestiong the product */}
+          <SheetContent>
+            <h2>Request Product</h2>
+            <StyledInputContainer>
+              <Input
+                type="text"
+                placeholder="Product name"
+                value={product.name}
+                onChange={(e) => setProductByKey('name', e.target.value)}
+                icon={FaShirt}
+              />
+              <Input
+                type="text"
+                placeholder="Product url"
+                value={product.link}
+                onChange={(e) => setProductByKey('link', e.target.value)}
+                icon={FaLink}
+              />
+            </StyledInputContainer>
+            <StyledFooter>
+              <StyledButton onClick={handleRequest} disabled={!canRequest()}>
+                <span>Request</span>
+              </StyledButton>
+            </StyledFooter>
+          </SheetContent>
         </Sheet>
       </StyledContainer>
     </AppLayout>
@@ -109,6 +147,25 @@ const StyledIcon = styled(BiPlus)`
   vertical-align: middle;
   position: relative;
   top: -0.1em;
+`;
+
+const StyledInputContainer = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const SheetContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const StyledFooter = styled.div`
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export default ProductsPage;
