@@ -34,7 +34,6 @@ authApi.interceptors.request.use(
   }
 );
 
-// Add response interceptor
 authApi.interceptors.response.use(
   (response) => response,
   (error) => {

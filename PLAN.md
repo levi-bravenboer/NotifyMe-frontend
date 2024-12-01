@@ -69,6 +69,11 @@ Om ervoor te zorgen dat je het maximale aantal punten krijgt voor je eindopdrach
 ### **React-code en Functionaliteiten (65%)**
 
 - [ ] Je hebt alle **vier de kernfunctionaliteiten correct geïmplementeerd**, inclusief authenticatie en drie andere belangrijke functies.
+  - [✅] Authenticatie
+  - [✅] Dashboard
+  - [ ] Producten overzicht
+  - [ ] Gebruikers profiel
+  - [ ] Cost calculator
 - [✅] De applicatie is gebouwd met **semantische HTML-elementen**.
 - [ ] Je hebt **CSS Flexbox correct toegepast** en alle stijlen zijn overzichtelijk gestructureerd.
 - [ ] Je maakt correct gebruik van **asynchrone functies (async/await)** en hebt de API-aanroepen correct geïmplementeerd.

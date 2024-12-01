@@ -20,7 +20,7 @@ This README describes the web application **Notify Me**.
 
 Ever had that special bag or coat you wanted to buy, but it’s always sold out? With **Notify Me**, you can subscribe to an item and receive notifications when it’s back in stock.
 
-Through this web app, you can track any item, view its status, and access past data regarding its availability, such as **out of stock** or **in stock** notifications.
+Through this web app, you can track any item, view it's status, and access past data regarding its availability, such as **out of stock** or **in stock** notifications.
 
 **Home Page:**
 
