@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Input = ({ type, placeholder, value, onChange, icon: Icon }) => {
-  const [isFocused, setIsFocused] = useState(false);
-
   return (
     <StyledInputWrapper>
       <StyledInput
@@ -11,12 +9,9 @@ const Input = ({ type, placeholder, value, onChange, icon: Icon }) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        $isFocused={isFocused}
       />
       {Icon && (
-        <IconWrapper $isFocused={isFocused}>
+        <IconWrapper>
           <Icon />
         </IconWrapper>
       )}
@@ -36,22 +31,14 @@ const IconWrapper = styled.span`
   color: #999;
   display: flex;
   align-items: center;
-  opacity: ${(props) => (props.$isFocused ? 0 : 1)};
-  transition: opacity 0.2s ease-in-out;
 `;
 
 const StyledInput = styled.input`
-  padding: 10px 10px 10px ${(props) => (props.$isFocused ? '10px' : '40px')};
+  padding: 10px 10px 10px 40px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
   width: 100%;
-  transition: padding 0.2s ease-in-out;
-
-  &::placeholder {
-    opacity: ${(props) => (props.$isFocused ? 0 : 1)};
-    transition: opacity 0.2s ease-in-out;
-  }
 `;
 
 export default Input;
