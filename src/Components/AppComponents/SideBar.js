@@ -5,7 +5,7 @@ import { FaWallet } from 'react-icons/fa';
 import { AiOutlineUser, AiFillSkin } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import AvatarImage from '../../Assets/round_avatar.png';
-import AuthContext from '../../Context/AuthContext';
+import AuthContext from '../../Context/auth-context';
 
 function Sidebar() {
   const navigate = useNavigate();

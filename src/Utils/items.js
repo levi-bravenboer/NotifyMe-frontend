@@ -1,4 +1,4 @@
-import { authApi } from './Api';
+import { authApi } from './api';
 
 export const getAllItems = async () => {
   try {

@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import NavButton from './NavButton';
-import AuthContext from '../../Context/AuthContext';
+import NavButton from './nav-button';
+import AuthContext from '../../Context/auth-context';
 
 function Nav(props) {
   const authContext = useContext(AuthContext);

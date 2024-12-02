@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import AuthContext from '../../Context/AuthContext';
+import AuthContext from '../../Context/auth-context';
 
 function NavBar() {
   const [partOfDay, setPartOfDay] = useState('evening');

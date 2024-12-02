@@ -2,30 +2,29 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { OuterLayout, InnerLayout } from '../../Styles/Layouts';
-import Nav from '../../Components/Navbar/Nav';
+import Nav from '../../Components/Navbar/nav';
 
-function DiscoverPage(props) {
+function HowPage(props) {
   const params = useParams();
   useEffect(() => {
     if (
       params.type === 'login' ||
       params.type === 'register' ||
       params.type === 'reset' ||
-      params.type === 'password-confirm'
+      params.type === 'resetconfirm'
     ) {
       props.showModal(params.type);
     }
   }, [params.type]);
-
   return (
     <OuterLayout>
       <InnerLayout>
-        <Nav showModal={props.showModal} type={params.type} discover={true} />
+        <Nav showModal={props.showModal} type={params.type} how={true} />
         <StyledSection>
-          <StyledH1>Know when to buy</StyledH1>
+          <StyledH1>We check if your item is instock every second!</StyledH1>
           <StyledText>
-            Your item always out of stock? Get a notifcation when the item is
-            instock.
+            When it is in stock we will send you a message. Go to the website
+            and buy the item you wanted for months.
           </StyledText>
         </StyledSection>
       </InnerLayout>
@@ -35,10 +34,10 @@ function DiscoverPage(props) {
 
 const StyledH1 = styled.h1`
   color: black;
-  font-size: 5rem;
+  font-size: 4rem;
 
   @media screen and (max-width: 940px) {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 `;
 const StyledSection = styled.div`
@@ -59,4 +58,5 @@ const StyledText = styled.p`
     font-size: 1.5rem;
   }
 `;
-export default DiscoverPage;
+
+export default HowPage;

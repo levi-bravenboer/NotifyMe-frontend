@@ -9,8 +9,8 @@ import {
   StyledFormErrorText,
   StyledPopupModal,
 } from '../../Styles/PopupModalStyles';
-import { phoneRegExp } from '../../Utils/Validators';
-import { registerUser } from '../../Context/AuthContext';
+import { phoneRegExp } from '../../Utils/validators';
+import { registerUser } from '../../Context/auth-context';
 import emailSendImg from '../../Assets/email_send_img.png';
 
 function RegisterForm() {

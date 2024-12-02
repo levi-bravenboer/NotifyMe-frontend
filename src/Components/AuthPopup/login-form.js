@@ -12,7 +12,7 @@ import {
 } from '../../Styles/PopupModalStyles';
 import loadingGif from '../../Assets/Loading_icon.gif';
 
-import AuthContext from '../../Context/AuthContext';
+import AuthContext from '../../Context/auth-context';
 
 function LoginForm(props) {
   const authContext = useContext(AuthContext);

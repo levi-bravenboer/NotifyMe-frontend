@@ -5,7 +5,7 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import DataTable from '../../Components/AppComponents/Datatable/Datatable';
 import { AppLayout } from '../../Styles/Layouts';
-import { getAllItems } from '../../Utils/ApiCalls';
+import { getAllItems } from '../../Utils/items';
 import Button from '../../Components/AppComponents/Button/Button';
 import Input from '../../Components/AppComponents/Input/Input';
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
-import PasswordConfirm from './PasswordConfirm';
+import LoginForm from './login-form';
+import RegisterForm from './register-form';
+import PasswordConfirm from './password-confirm';
 
 function AuthPopupModal(props) {
   return (

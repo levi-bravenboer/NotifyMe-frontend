@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { OuterLayout, InnerLayout } from '../../Styles/Layouts';
-import Nav from '../../Components/Navbar/Nav';
-import PricingBox from '../../Components/PricingBox';
+import Nav from '../../Components/Navbar/nav';
+import PricingBox from '../../Components/pricing-box';
 
 function PricingPage(props) {
   const params = useParams();

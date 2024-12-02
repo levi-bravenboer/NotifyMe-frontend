@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './Context/AuthContext';
-import AuthPopupModal from './Components/AuthPopup/AuthPopupModal';
-import ProtectedRoute from './Utils/ProtectedRoute';
+import { AuthProvider } from './Context/auth-context';
+import AuthPopupModal from './Components/AuthPopup/auth-modal';
+import ProtectedRoute from './Utils/protected-route';
 
-import DiscoverPage from './Pages/LandingsPages/DiscoverPage';
-import HowPage from './Pages/LandingsPages/Howpage';
-import PricingPage from './Pages/LandingsPages/PricingPage';
-import SubscriptionPage from './Pages/AppPages/SubscriptionPage';
-import YourItemsPage from './Pages/AppPages/YourItemsPage';
-import MePage from './Pages/AppPages/MePage';
-import ProductsPage from './Pages/AppPages/ProductsPage';
-import MainPage from './Pages/AppPages/MainPage';
-import ErrorPage from './Pages/ErrorPage';
+import DiscoverPage from './Pages/LandingsPages/discover';
+import HowPage from './Pages/LandingsPages/how';
+import PricingPage from './Pages/LandingsPages/pricing';
+import SubscriptionPage from './Pages/AppPages/subscriptions';
+import YourItemsPage from './Pages/AppPages/my-items';
+import MePage from './Pages/AppPages/me';
+import ProductsPage from './Pages/AppPages/products-overview';
+import MainPage from './Pages/AppPages/dashboard';
+import ErrorPage from './Pages/error';
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
