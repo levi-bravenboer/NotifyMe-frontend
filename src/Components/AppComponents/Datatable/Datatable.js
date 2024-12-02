@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function DataTable({ columns = [], data = [], onRowClick, className }) {
+function Datatable({ columns = [], data = [], onRowClick, className }) {
   if (!columns.length || !data.length) {
     return <div>Geen gegevens gevonden</div>;
   }
@@ -95,4 +95,4 @@ const StyledCell = styled.td`
   text-overflow: ellipsis;
 `;
 
-export default DataTable;
+export default Datatable;

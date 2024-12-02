@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BiPlus } from 'react-icons/bi';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import Sidebar from '../../Components/AppComponents/SideBar';
-import DataTable from '../../Components/AppComponents/Datatable/Datatable';
+import Datatable from '../../Components/AppComponents/Datatable/Datatable';
 import { AppLayout } from '../../Styles/Layouts';
 import { getAllItems } from '../../Utils/items';
 import Button from '../../Components/AppComponents/Button/Button';
@@ -57,7 +57,7 @@ function ProductsPage() {
             icon={FaMagnifyingGlass}
           />
         </StyledHeader>
-        <DataTable columns={columns} data={filteredProducts} />
+        <Datatable columns={columns} data={filteredProducts} />
       </StyledContainer>
     </AppLayout>
   );
