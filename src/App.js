@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './Context/auth-context';
 import AuthPopupModal from './Components/AuthPopup/auth-modal';
-import ProtectedRoute from './Utils/protected-route';
+import ProtectedRoute from './Utils/ProtectedRoute';
 
 import DiscoverPage from './Pages/LandingsPages/discover';
 import HowPage from './Pages/LandingsPages/how';
@@ -13,6 +13,7 @@ import MePage from './Pages/AppPages/me';
 import ProductsPage from './Pages/AppPages/products-overview';
 import MainPage from './Pages/AppPages/dashboard';
 import ErrorPage from './Pages/error';
+import CostCalculatorPage from './Pages/AppPages/cost-calculator';
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);

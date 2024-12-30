@@ -5,7 +5,7 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import Datatable from '../../Components/AppComponents/Datatable/Datatable';
 import { AppLayout } from '../../Styles/Layouts';
-import { getAllItems } from '../../Utils/items';
+import { getAllItems } from '../../Utils/Items';
 import Button from '../../Components/AppComponents/Button/Button';
 import Input from '../../Components/AppComponents/Input/Input';
 
@@ -27,7 +27,7 @@ function ProductsPage() {
   }, []);
 
   const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchValue.toLowerCase()),
+    product.name.toLowerCase().includes(searchValue.toLowerCase())
   );
 
   const columns = [

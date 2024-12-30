@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
-import { apiInstance } from '../Utils/api';
+import { apiInstance } from '../Utils/Api';
 
 const AuthContext = createContext();
 
@@ -10,12 +10,12 @@ export default AuthContext;
 export const AuthProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(
     localStorage.getItem('authTokens') &&
-      JSON.parse(localStorage.getItem('authTokens')),
+      JSON.parse(localStorage.getItem('authTokens'))
   );
 
   const [user, setUser] = useState(
     localStorage.getItem('authTokens') &&
-      jwtDecode(localStorage.getItem('authTokens')),
+      jwtDecode(localStorage.getItem('authTokens'))
   );
   const [userData, setUserData] = useState(false);
   const [loading, setLoading] = useState(false);

@@ -9,7 +9,7 @@ import {
   StyledFormErrorText,
   StyledLoadingGif,
   StyledLoader,
-} from '../../Styles/popup-modal-styles';
+} from '../../Styles/PopupModalStyles';
 import loadingGif from '../../Assets/Loading_icon.gif';
 
 import AuthContext from '../../Context/auth-context';
@@ -41,13 +41,12 @@ function LoginForm(props) {
       try {
         await authContext.loginUser(data);
         props.closeAuth();
-        setShowLoading(false);
       } catch (error) {
         if (error.response.status === 401) {
           setLoginAuthError('unauthorized');
         }
-        setShowLoading(true);
       }
+      setShowLoading(false);
     },
   });
 

@@ -1,17 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
-import Dropdown from './Dropdown';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getAllItems } from '../../../Utils/ApiCalls';
-import { euroToDollarRate } from '../../../Utils/currencyApi/ApiCalls';
-import ProductsRepeaterWidget from './ProductsRepeaterWidget';
-import CostSummaryWidget from './CostSummaryWidget';
+import { BiPlus } from 'react-icons/bi';
+import Dropdown from './Dropdown';
+import { getAllItems } from '../../../Utils/Items';
+import { getEuroToDollarExchangeRate } from '../../../Utils/currency-api/EuroToDollar';
+import RepeaterRow from './RepeaterRow';
+import Button from '../Button/Button';
 
 function CostCalculator() {
   const [itemData, setItemData] = useState([]);
+  const [dropdownData, setDropdownData] = useState([]);
   const [rows, setRows] = useState([]);
   const [euroDollarRate, setEuroDollarRate] = useState(1);
+  const [selectedItem, setSelectedItem] = useState();
 
   useEffect(() => {
     const fetchItemData = async () => {
@@ -22,39 +23,57 @@ function CostCalculator() {
         console.error(e);
       }
       setItemData(items);
+      setDropdownData(items.map(({ id, name }) => ({ id, title: name })));
     };
 
     const fetchRateData = async () => {
-      let rate = 1;
       try {
-        rate = await euroToDollarRate();
+        const rate = await getEuroToDollarExchangeRate();
+        setEuroDollarRate(rate);
       } catch (e) {
-        console.error(e);
+        console.error('Error fetching euro to dollar rate:', e);
+        setEuroDollarRate(1);
       }
-      setEuroDollarRate(rate);
     };
 
     fetchItemData();
     fetchRateData();
   }, []);
 
+  const addItem = () => {
+    const item = itemData.find(({ id }) => Number(id) === Number(selectedItem));
+    if (item) {
+      const updatedRows = new Set(rows.map((row) => row.id));
+      updatedRows.add(item.id);
+      setRows(itemData.filter(({ id }) => updatedRows.has(id)));
+    }
+  };
+
   return (
     <>
-      <StyledContainer>
-        <Dropdown onClick={console.log('test')} text="test" />
-      </StyledContainer>
       <StyledView>
         <StyledHeader>
-          <p>test</p>
+          <Dropdown
+            onClick={setSelectedItem}
+            placeholder="Select item"
+            options={dropdownData}
+          />
+          <Button onClick={addItem} disabled={!selectedItem || rows.length > 4}>
+            <StyledIcon />
+          </Button>
+          <span>{`Items ${rows.length} / 5`}</span>
         </StyledHeader>
         <StyledContainer>
-          <ProductsRepeaterWidget
-            euroDollarRate={euroDollarRate}
-            rows={rows}
-            dropdownOptions={itemData}
-            setRows={setRows}
-          />
-          <CostSummaryWidget></CostSummaryWidget>
+          {rows.map((row, index) => {
+            return (
+              <RepeaterRow
+                key={index}
+                euroDollarRate={euroDollarRate}
+                value={row}
+              />
+            );
+          })}
+          <StyledFooter>test</StyledFooter>
         </StyledContainer>
       </StyledView>
     </>
@@ -68,17 +87,27 @@ const StyledView = styled.div`
 
 const StyledHeader = styled.div`
   margin: 20px 20px 20px 20px;
-  width: 20%;
-  heightt: 10%;
+  display: flex;
+  gap: 1em;
+  align-items: center;
 `;
 
 const StyledContainer = styled.div`
   padding: 20px 20px 20px 20px;
   width: 100%;
   max-height: 80%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+`;
+
+const StyledIcon = styled(BiPlus)`
+  min-height: 2em;
+  vertical-align: middle;
+  position: relative;
+  top: -0.1em;
+`;
+
+const StyledFooter = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 export default CostCalculator;

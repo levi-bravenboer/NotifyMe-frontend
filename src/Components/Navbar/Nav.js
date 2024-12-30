@@ -19,13 +19,16 @@ function Nav(props) {
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
-        <MenuItem to={'/'} active={!!props.discover}>
+        <MenuItem to={'/'} aria-current={props.discover ? 'page' : undefined}>
           Discover
         </MenuItem>
-        <MenuItem to={'/pricing/'} active={!!props.pricing}>
+        <MenuItem
+          to={'/pricing/'}
+          aria-current={props.pricing ? 'page' : undefined}
+        >
           Pricing
         </MenuItem>
-        <MenuItem to={'/how/'} active={!!props.how}>
+        <MenuItem to={'/how/'} aria-current={props.how ? 'page' : undefined}>
           How it works
         </MenuItem>
         <NavButton
@@ -83,7 +86,8 @@ const MenuItem = styled(Link)`
   &:hover {
     color: var(--green-color);
   }
-  color: ${({ active }) => (active ? 'var(--green-color)' : 'inherit')};
+  color: ${({ 'aria-current': ariaCurrent }) =>
+    ariaCurrent === 'page' ? 'var(--green-color)' : 'inherit'};
 
   @media (max-width: 940px) {
     padding-top: 1rem;

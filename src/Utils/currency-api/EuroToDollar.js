@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { DOMAIN_URL, AXIOS_CONFIG } from './api';
+import { DOMAIN_URL, AXIOS_CONFIG } from './Api';
 
-export const euroToDollarRate = async () => {
+export const getEuroToDollarExchangeRate = async () => {
   try {
     const {
       data: {
@@ -15,3 +15,7 @@ export const euroToDollarRate = async () => {
     return null;
   }
 };
+
+export const getMonthlyPrice = (price) => price * 0.01;
+
+export const formatPrice = (price, prefix) => `${prefix} ${price.toFixed(2)}`;

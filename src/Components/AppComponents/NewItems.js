@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import noAvatarImage from '../../Assets/no_image_found.png';
-import { getAllItems } from '../../Utils/items';
+import { getAllItems } from '../../Utils/Items';
 
 function NewItems() {
   const [apiData, setApiData] = useState([]);

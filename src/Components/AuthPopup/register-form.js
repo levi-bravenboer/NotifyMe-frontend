@@ -8,8 +8,8 @@ import {
   StyledFormLink,
   StyledFormErrorText,
   StyledPopupModal,
-} from '../../Styles/popup-modal-styles';
-import { phoneRegExp } from '../../Utils/validators';
+} from '../../Styles/PopupModalStyles';
+import { phoneRegExp } from '../../Utils/Validators';
 import { registerUser } from '../../Context/auth-context';
 import emailSendImg from '../../Assets/email_send_img.png';
 

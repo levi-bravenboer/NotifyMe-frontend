@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { OuterLayout, InnerLayout } from '../../Styles/layouts';
-import Nav from '../../Components/Navbar/nav';
+import { OuterLayout, InnerLayout } from '../../Styles/Layouts';
+import Nav from '../../Components/Navbar/Nav';
 
 function HowPage(props) {
   const params = useParams();
