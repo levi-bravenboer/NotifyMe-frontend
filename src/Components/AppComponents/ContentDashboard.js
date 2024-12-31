@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import NavBar from './NavBar';
-import Earnings from './TotalItems';
 import Info from './Info';
 import LastItemInstock from './LastItemInstock';
-import YourItems from './YourItems';
+import NavBar from './NavBar';
 import NewItems from './NewItems';
+import Earnings from './TotalItems';
+import YourItems from './YourItems';
 
 function ContentDashboard() {
   return (

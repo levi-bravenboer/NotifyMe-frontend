@@ -38,12 +38,25 @@ export const InnerLayout = styled.section`
 `;
 
 export const AppLayout = styled.section`
-  margin: 1rem 1rem 1rem 1rem;
+  margin: 1rem;
   display: flex;
   height: 97vh;
   background: linear-gradient(to bottom right, white 0%, #e6e4ff 70%);
   border-radius: 2rem;
+
+  & > :first-child {
+    width: 20vw;
+  }
+
+  & > :nth-child(2) {
+    flex: 1;
+  }
+
   @media screen and (min-width: 320px) and (max-width: 1080px) {
     flex-direction: column;
+
+    & > :first-child {
+      width: 100%;
+    }
   }
 `;

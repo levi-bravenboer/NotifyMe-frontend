@@ -1,6 +1,6 @@
+import dayjs from 'dayjs';
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-import dayjs from 'dayjs';
 import AuthContext from '../../Context/auth-context';
 
 function NavBar() {

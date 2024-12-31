@@ -1,52 +1,127 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import FontAwesome from 'react-fontawesome';
 
-function Dropdown({ list, isOpen, headerTitle, onSelect }) {
-  const [listOpen, setListOpen] = useState(false);
+const Dropdown = ({ options, placeholder, onClick }) => {
+  const [isOpen, setOpen] = useState(false);
+  const [selectedOption, setSelectedItem] = useState(null);
+  const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    setListOpen(isOpen);
-  }, [isOpen]);
+  const toggleDropdown = () => setOpen(!isOpen);
 
-  useEffect(() => {
-    setListOpen(isOpen);
-  }, [isOpen]);
-
-  const toggleList = () => {
-    setListOpen(!listOpen);
+  const handleItemClick = (id) => {
+    const newValue = selectedOption == id ? null : id;
+    if (newValue) toggleDropdown();
+    setSelectedItem(newValue);
+    onClick(newValue);
   };
 
-  return (
-    <DropdownWrapper>
-      <button type="button" className="dd-header" onClick={toggleList}>
-        <div className="dd-header-title">{headerTitle}</div>
-        {listOpen ? (
-          <FontAwesome name="angle-up" size="2x" />
-        ) : (
-          <FontAwesome name="angle-down" size="2x" />
-        )}
-      </button>
-      {listOpen && (
-        <div role="list" className="dd-list">
-          {list.map((item) => (
-            <button
-              type="button"
-              className="dd-list-item"
-              key={item.id}
-              onClick={() => onSelect(item)}
-            >
-              {item.title} {item.selected && <FontAwesome name="check" />}
-            </button>
-          ))}
-        </div>
-      )}
-    </DropdownWrapper>
-  );
-}
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setOpen(false);
+    }
+  };
 
-const DropdownWrapper = styled.div`
-  font-family: 'Avenir Next', sans-serif !important;
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <StyledDropdownOuterContainer ref={dropdownRef}>
+      <StyledDropdownContainer>
+        <StyledDropdownHeader onClick={toggleDropdown}>
+          {selectedOption
+            ? options.find((option) => option.id == selectedOption).title
+            : placeholder}
+          <StyledIcon
+            className={`fa fa-chevron-right ${isOpen && 'open'}`}
+          ></StyledIcon>
+        </StyledDropdownHeader>
+        <StyledDropdownBody className={`${isOpen && 'open'}`}>
+          {options.map((item) => (
+            <StyledDropdownItem
+              onClick={(e) => handleItemClick(e.target.id)}
+              id={item.id}
+              key={item.id}
+              className={`${item.id == selectedOption && 'selected'}`}
+            >
+              {item.title}
+            </StyledDropdownItem>
+          ))}
+        </StyledDropdownBody>
+      </StyledDropdownContainer>
+    </StyledDropdownOuterContainer>
+  );
+};
+
+const StyledDropdownOuterContainer = styled.div`
+  position: relative;
+  display: block;
+`;
+
+const StyledDropdownContainer = styled.div`
+  min-width: 200px;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background-color: white;
+`;
+
+const StyledDropdownHeader = styled.div`
+  padding: 15px;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+`;
+
+const StyledDropdownBody = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  border-top: 1px solid #e5e8ec;
+  display: none;
+  max-height: 60vh;
+  overflow-y: auto;
+  background-color: white;
+
+  &.open {
+    display: block;
+  }
+`;
+
+const StyledDropdownItem = styled.div`
+  padding: 10px;
+
+  &.selected {
+    background-color: #d3d3d3;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const StyledIcon = styled.i`
+  font-size: 13px;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+  transform: rotate(0deg);
+  transition: all 0.2s ease-in-out;
+
+  &.open {
+    transform: rotate(90deg);
+  }
 `;
 
 export default Dropdown;

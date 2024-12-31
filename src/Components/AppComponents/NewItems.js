@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import noAvatarImage from '../../Assets/no_image_found.png';
-import { getAllItems } from '../../Utils/items';
+import { getAllItems } from '../../Utils/Items';
 
 function NewItems() {
   const [apiData, setApiData] = useState([]);
@@ -21,64 +21,64 @@ function NewItems() {
     setApiData(fetchData());
   }, []);
 
-  if (apiData) {
-    return (
-      <InvoicesContainer>
-        <CardContent>
-          <Invoice>
-            <Info>
-              <StyledAvatar>
-                <img
-                  src={
-                    apiData.productimage != null
-                      ? apiData.productimage
-                      : noAvatarImage
-                  }
-                  alt=""
-                />
-              </StyledAvatar>
-              <TextContainer>
-                <StyledTitle>
-                  {apiData[0] ? apiData[0].name : 'Placeholder'}
-                </StyledTitle>
-                <StyledSubTitle>
-                  {apiData[0] ? apiData[0].color : 'Placeholder'}
-                </StyledSubTitle>
-              </TextContainer>
-            </Info>
-            <Container>
-              <Price>{`€ ${apiData[0] ? apiData[0].price : '0.00'}`}</Price>
-            </Container>
-          </Invoice>
-          <Invoice>
-            <Info>
-              <StyledAvatar>
-                <img
-                  src={
-                    apiData.productimage ? apiData.productimage : noAvatarImage
-                  }
-                  alt=""
-                />
-              </StyledAvatar>
-              <TextContainer>
-                <StyledTitle>
-                  {apiData[1] ? apiData[1].name : 'Placeholder'}
-                </StyledTitle>
-                <StyledSubTitle>
-                  {apiData[1] ? apiData[1].color : 'Placeholder'}
-                </StyledSubTitle>
-              </TextContainer>
-            </Info>
-            <Container>
-              <Price>{`€ ${apiData[1] ? apiData[1].price : '0.00'}`}</Price>
-            </Container>
-          </Invoice>
-        </CardContent>
-      </InvoicesContainer>
-    );
-  } else {
-    return <p>test</p>;
+  if (!apiData) {
+    <></>;
   }
+
+  return (
+    <InvoicesContainer>
+      <CardContent>
+        <Invoice>
+          <Info>
+            <StyledAvatar>
+              <img
+                src={
+                  apiData.productimage != null
+                    ? apiData.productimage
+                    : noAvatarImage
+                }
+                alt=""
+              />
+            </StyledAvatar>
+            <TextContainer>
+              <StyledTitle>
+                {apiData[0] ? apiData[0].name : 'Placeholder'}
+              </StyledTitle>
+              <StyledSubTitle>
+                {apiData[0] ? apiData[0].color : 'Placeholder'}
+              </StyledSubTitle>
+            </TextContainer>
+          </Info>
+          <Container>
+            <Price>{`€ ${apiData[0] ? apiData[0].price : '0.00'}`}</Price>
+          </Container>
+        </Invoice>
+        <Invoice>
+          <Info>
+            <StyledAvatar>
+              <img
+                src={
+                  apiData.productimage ? apiData.productimage : noAvatarImage
+                }
+                alt=""
+              />
+            </StyledAvatar>
+            <TextContainer>
+              <StyledTitle>
+                {apiData[1] ? apiData[1].name : 'Placeholder'}
+              </StyledTitle>
+              <StyledSubTitle>
+                {apiData[1] ? apiData[1].color : 'Placeholder'}
+              </StyledSubTitle>
+            </TextContainer>
+          </Info>
+          <Container>
+            <Price>{`€ ${apiData[1] ? apiData[1].price : '0.00'}`}</Price>
+          </Container>
+        </Invoice>
+      </CardContent>
+    </InvoicesContainer>
+  );
 }
 
 const InvoicesContainer = styled.div`
