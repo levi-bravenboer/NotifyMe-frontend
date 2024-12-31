@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthPopupModal from './Components/AuthPopup/AuthModal';
 import { AuthProvider } from './Context/auth-context';
-import CostCalculatorPage from './Pages/AppPages/cost-calculator';
-import MainPage from './Pages/AppPages/dashboard';
+import CostCalculatorPage from './Pages/AppPages/CostCalculator';
+import DashboardPage from './Pages/AppPages/dashboard';
 import MePage from './Pages/AppPages/me';
-import YourItemsPage from './Pages/AppPages/my-items';
-import ProductsPage from './Pages/AppPages/products-overview';
-import SubscriptionPage from './Pages/AppPages/subscriptions';
+import ProductsPage from './Pages/AppPages/ProductsOverview';
 import ErrorPage from './Pages/error';
 import DiscoverPage from './Pages/LandingsPages/discover';
 
@@ -51,14 +49,12 @@ function App() {
           />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/app" element={<MainPage />} />
-            <Route path="/app/subscriptions" element={<SubscriptionPage />} />
+            <Route path="/app" element={<DashboardPage />} />
             <Route
               path="/app/cost-calculator"
               element={<CostCalculatorPage />}
               title="Notify me - Cost Calculator"
             />
-            <Route path="/app/my-items" element={<YourItemsPage />} />
             <Route path="/app/products" element={<ProductsPage />} />
             <Route path="/app/products/:slug" element={<ProductsPage />} />
             <Route path="/app/me" element={<MePage />} />

@@ -49,6 +49,14 @@ function CostCalculator() {
     }
   };
 
+  const deleteItem = (index) => {
+    setRows((prevRows) => {
+      const rowsDuplicate = [...prevRows];
+      rowsDuplicate.splice(index, 1);
+      return rowsDuplicate;
+    });
+  };
+
   return (
     <>
       <StyledView>
@@ -70,10 +78,10 @@ function CostCalculator() {
                 key={index}
                 euroDollarRate={euroDollarRate}
                 value={row}
+                onDelete={() => deleteItem(index)}
               />
             );
           })}
-          <StyledFooter>test</StyledFooter>
         </StyledContainer>
       </StyledView>
     </>
@@ -103,11 +111,6 @@ const StyledIcon = styled(BiPlus)`
   vertical-align: middle;
   position: relative;
   top: -0.1em;
-`;
-
-const StyledFooter = styled.div`
-  display: flex;
-  gap: 10px;
 `;
 
 export default CostCalculator;

@@ -3,7 +3,7 @@ import ContentDashboard from '../../Components/AppComponents/ContentDashboard';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import { AppLayout } from '../../Styles/Layouts';
 
-function MainPage() {
+function DashboardPage() {
   return (
     <AppLayout>
       <Sidebar />
@@ -12,4 +12,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default DashboardPage;

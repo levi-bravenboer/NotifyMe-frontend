@@ -26,7 +26,7 @@ function RepeaterRow({ value, euroDollarRate = 1, onDelete }) {
         <span>{value?.name || '-'}</span>
         <RepeaterRowPrice>{priceFormatted}</RepeaterRowPrice>
       </RepeaterRowLabel>
-      <TrashIcon onClick={onDelete()} />
+      <TrashIcon onClick={onDelete} />
     </StyledContainer>
   );
 }

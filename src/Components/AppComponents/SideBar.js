@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { AiOutlineUser, AiFillSkin } from 'react-icons/ai';
 import {
   RiHomeLine,
@@ -16,40 +16,41 @@ function Sidebar() {
   const authContext = useContext(AuthContext);
 
   const { user } = authContext;
-  const userData = {
-    ...user,
-    firstname: user.firstname || 'Sir/Madam.',
-    lastname: user.lastname || '',
-    avatar: user.userImg || AvatarImage,
-  };
 
-  const navItems = [
-    {
-      title: 'Dashboard',
-      navigationPath: '/app',
-      icon: RiHomeLine,
-    },
-    {
-      title: 'Your items',
-      navigationPath: '/app/my-items',
-      icon: RiFileCopyLine,
-    },
-    {
-      title: 'Calculator',
-      navigationPath: '/app/cost-calculator',
-      icon: RiCalculatorFill,
-    },
-    {
-      title: 'Products',
-      navigationPath: '/app/products',
-      icon: AiFillSkin,
-    },
-    {
-      title: 'My settings',
-      navigationPath: '/app/me',
-      icon: AiOutlineUser,
-    },
-  ];
+  const userData = useMemo(
+    () => ({
+      firstname: user.firstname || 'Sir/Madam.',
+      lastname: user.lastname || '',
+      avatar: user.userImg || AvatarImage,
+    }),
+    [user]
+  );
+
+  const navItems = useMemo(
+    () => [
+      {
+        title: 'Dashboard',
+        navigationPath: '/app',
+        icon: RiHomeLine,
+      },
+      {
+        title: 'Calculator',
+        navigationPath: '/app/cost-calculator',
+        icon: RiCalculatorFill,
+      },
+      {
+        title: 'Products',
+        navigationPath: '/app/products',
+        icon: AiFillSkin,
+      },
+      {
+        title: 'My settings',
+        navigationPath: '/app/me',
+        icon: AiOutlineUser,
+      },
+    ],
+    []
+  );
 
   return (
     <StyledContainer>
@@ -63,6 +64,7 @@ function Sidebar() {
             <StyledLink
               key={item.title}
               onClick={() => navigate(item.navigationPath)}
+              aria-label={`Navigate to ${item.title}`}
             >
               <item.icon />
               <h3>{item.title}</h3>
@@ -80,11 +82,19 @@ function Sidebar() {
   );
 }
 
-const StyledContainer = styled.div`
-  width: 20%;
-  height: 100% !important;
+const BaseContainer = styled.div`
   border-radius: 2rem;
   background-color: #091322;
+  color: #c4c4c4;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const StyledContainer = styled(BaseContainer)`
+  min-width: 250px;
+  width: 20%;
+  height: 100% !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,11 +125,9 @@ const StyledName = styled.h1`
   margin: 0.8rem 0 0.5rem 0;
 `;
 
-const StyledLinksContainer = styled.div`
-  background-color: #162349;
+const StyledLinksContainer = styled(BaseContainer)`
   height: 100%;
   width: 100%;
-  border-radius: 2rem;
 `;
 
 const StyledLinks = styled.ul`
@@ -138,6 +146,7 @@ const StyledLink = styled.li`
   gap: 1rem;
   color: #e4e4e4;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 
   h3 {
     font-weight: 300;
@@ -146,6 +155,11 @@ const StyledLink = styled.li`
     font-size: 1.1rem;
     margin-top: 3%;
   }
+  &:hover {
+    transform: scale(1.05);
+    color: #ffffff;
+  }
+
   @media screen and (min-width: 320px) and (max-width: 1080px) {
     svg {
       margin-top: 0.7rem;
@@ -153,20 +167,18 @@ const StyledLink = styled.li`
   }
 `;
 
-const StyledLogoutContainer = styled.div`
+const StyledLogoutContainer = styled(BaseContainer)`
   width: 60%;
-  background-color: #091322;
-  color: #c4c4c4;
   height: 15%;
   margin: auto auto;
-  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   justify-content: center;
 
   &:hover {
-    cursor: pointer;
+    background-color: #162349;
+    transform: scale(1.05);
   }
 
   @media screen and (min-width: 320px) and (max-width: 1080px) {
