@@ -62,7 +62,8 @@ const StyledDropdownOuterContainer = styled.div`
 `;
 
 const StyledDropdownContainer = styled.div`
-  width: 300px;
+  min-width: 200px;
+  max-width: 100%;
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   background-color: white;
@@ -70,6 +71,7 @@ const StyledDropdownContainer = styled.div`
 
 const StyledDropdownHeader = styled.div`
   padding: 15px;
+  font-size: 15px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
