@@ -35,7 +35,7 @@ function Sidebar() {
       icon: RiFileCopyLine,
     },
     {
-      title: 'Cost calculator',
+      title: 'Calculator',
       navigationPath: '/app/cost-calculator',
       icon: RiCalculatorFill,
     },
