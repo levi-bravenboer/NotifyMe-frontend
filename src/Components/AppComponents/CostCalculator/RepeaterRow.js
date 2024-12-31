@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { TbTrash } from 'react-icons/tb';
+import styled from 'styled-components';
 import {
   formatPrice,
   getMonthlyPrice,

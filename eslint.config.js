@@ -15,10 +15,10 @@ export default [
         },
       },
       globals: {
-        window: true,
-        document: true,
-        console: true,
-        module: true,
+        window: 'readonly',
+        document: 'readonly',
+        console: 'readonly',
+        module: 'readonly',
       },
     },
     plugins: {
@@ -28,11 +28,14 @@ export default [
     },
     rules: {
       'react/prop-types': 'off',
-      'prettier/prettier': ['error', { endOfLine: 'auto' }],
+      'prettier/prettier': ['error', prettierConfig],
       'react/react-in-jsx-scope': 'off',
       'import/order': [
         'error',
-        { groups: ['builtin', 'external', 'internal'] },
+        {
+          groups: ['builtin', 'external', 'internal'],
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
       ],
       camelcase: 'error',
       'no-underscore-dangle': 'error',

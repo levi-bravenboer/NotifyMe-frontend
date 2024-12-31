@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { BiPlus } from 'react-icons/bi';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
-import Sidebar from '../../Components/AppComponents/SideBar';
+import styled from 'styled-components';
+import Button from '../../Components/AppComponents/Button/Button';
 import Datatable from '../../Components/AppComponents/Datatable/Datatable';
+import Input from '../../Components/AppComponents/Input/Input';
+import Sidebar from '../../Components/AppComponents/SideBar';
 import { AppLayout } from '../../Styles/Layouts';
 import { getAllItems } from '../../Utils/Items';
-import Button from '../../Components/AppComponents/Button/Button';
-import Input from '../../Components/AppComponents/Input/Input';
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);

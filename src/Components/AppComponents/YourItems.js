@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import NoImageFound from '../../Assets/no_image_found.png';
 
 function YourItems() {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { StyledPopupModal } from '../../Styles/PopupModalStyles';
 import { confirmRegistration } from '../../Context/auth-context';
+import { StyledPopupModal } from '../../Styles/PopupModalStyles';
 
 function PasswordConfirm() {
   const [counter, setCounter] = useState(10);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { IoStatsChart } from 'react-icons/io5';
+import styled from 'styled-components';
 import { getAllItems } from '../../Utils/Items';
 function TotalItems() {
   const [apiData, setApiData] = useState([]);

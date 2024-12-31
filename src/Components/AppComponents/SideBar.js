@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
+import { AiOutlineUser, AiFillSkin } from 'react-icons/ai';
 import {
   RiHomeLine,
   RiFileCopyLine,
   RiLogoutBoxLine,
   RiCalculatorFill,
 } from 'react-icons/ri';
-import { AiOutlineUser, AiFillSkin } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import AvatarImage from '../../Assets/round_avatar.png';
 import AuthContext from '../../Context/auth-context';
 

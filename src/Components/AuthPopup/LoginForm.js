@@ -1,6 +1,9 @@
-import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
+import React, { useContext, useState } from 'react';
 import * as Yup from 'yup';
+import loadingGif from '../../Assets/Loading_icon.gif';
+
+import AuthContext from '../../Context/auth-context';
 import {
   StyledForm,
   StyledInput,
@@ -10,9 +13,6 @@ import {
   StyledLoadingGif,
   StyledLoader,
 } from '../../Styles/PopupModalStyles';
-import loadingGif from '../../Assets/Loading_icon.gif';
-
-import AuthContext from '../../Context/auth-context';
 
 function LoginForm(props) {
   const authContext = useContext(AuthContext);

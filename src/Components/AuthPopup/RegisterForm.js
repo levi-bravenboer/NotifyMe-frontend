@@ -1,6 +1,8 @@
-import { useState } from 'react';
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import * as Yup from 'yup';
+import emailSendImg from '../../Assets/email_send_img.png';
+import { registerUser } from '../../Context/auth-context';
 import {
   StyledForm,
   StyledInput,
@@ -10,8 +12,6 @@ import {
   StyledPopupModal,
 } from '../../Styles/PopupModalStyles';
 import { phoneRegExp } from '../../Utils/Validators';
-import { registerUser } from '../../Context/auth-context';
-import emailSendImg from '../../Assets/email_send_img.png';
 
 function RegisterForm() {
   const [showLoading, setShowLoading] = useState(false);

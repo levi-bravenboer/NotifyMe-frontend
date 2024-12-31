@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { BiPlus } from 'react-icons/bi';
+import styled from 'styled-components';
 import Dropdown from './Dropdown';
-import { getAllItems } from '../../../Utils/Items';
-import { getEuroToDollarExchangeRate } from '../../../Utils/currency-api/EuroToDollar';
 import RepeaterRow from './RepeaterRow';
+import { getEuroToDollarExchangeRate } from '../../../Utils/currency-api/EuroToDollar';
+import { getAllItems } from '../../../Utils/Items';
 import Button from '../Button/Button';
 
 function CostCalculator() {

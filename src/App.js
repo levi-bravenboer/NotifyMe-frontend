@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AuthPopupModal from './Components/AuthPopup/AuthModal';
 import { AuthProvider } from './Context/auth-context';
-import AuthPopupModal from './Components/AuthPopup/auth-modal';
-import ProtectedRoute from './Utils/ProtectedRoute';
-
+import CostCalculatorPage from './Pages/AppPages/cost-calculator';
+import MainPage from './Pages/AppPages/dashboard';
+import MePage from './Pages/AppPages/me';
+import YourItemsPage from './Pages/AppPages/my-items';
+import ProductsPage from './Pages/AppPages/products-overview';
+import SubscriptionPage from './Pages/AppPages/subscriptions';
+import ErrorPage from './Pages/error';
 import DiscoverPage from './Pages/LandingsPages/discover';
+
 import HowPage from './Pages/LandingsPages/how';
 import PricingPage from './Pages/LandingsPages/pricing';
-import SubscriptionPage from './Pages/AppPages/subscriptions';
-import YourItemsPage from './Pages/AppPages/my-items';
-import MePage from './Pages/AppPages/me';
-import ProductsPage from './Pages/AppPages/products-overview';
-import MainPage from './Pages/AppPages/dashboard';
-import ErrorPage from './Pages/error';
-import CostCalculatorPage from './Pages/AppPages/cost-calculator';
+import ProtectedRoute from './Utils/ProtectedRoute';
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
