@@ -9,7 +9,7 @@ import Input from '../../Components/AppComponents/Input/Input';
 import Sheet from '../../Components/AppComponents/Sheet/Sheet';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import { AppLayout } from '../../Styles/Layouts';
-import { getAllItems } from '../../Utils/ApiCalls';
+import { getAllItems } from '../../Utils/Items';
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);

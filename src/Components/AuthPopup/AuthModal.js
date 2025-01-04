@@ -13,27 +13,27 @@ function AuthPopupModal(props) {
           &times;
         </StyledCloseButton>
         {props.type === 'login' && (
-          <LoginForm closeAuth={props.closeFunction}></LoginForm>
+          <LoginForm closeAuth={props.closeFunction} />
         )}
         {props.type === 'password-confirm' && (
-          <PasswordConfirm closeAuth={props.closeFunction}></PasswordConfirm>
+          <PasswordConfirm closeAuth={props.closeFunction} />
         )}
-        {props.type === 'register' && <RegisterForm></RegisterForm>}
+        {props.type === 'register' && <RegisterForm />}
       </StyledModal>
     </StyledModalOverlay>
   );
 }
 const StyledModalOverlay = styled.div`
-  display: flex; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: flex;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 const StyledModal = styled.div`
   border-radius: 5px;

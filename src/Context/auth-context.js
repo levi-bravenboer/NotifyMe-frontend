@@ -152,7 +152,7 @@ export const registerUser = async (userData) => {
   };
 
   try {
-    const response = await apiInstance.post('/auth/users', body);
+    const response = await apiInstance.post('/auth/users/', body);
 
     return { code: response.status, data: response.data };
   } catch (error) {
@@ -162,7 +162,7 @@ export const registerUser = async (userData) => {
 
 export const confirmRegistration = async (body) => {
   try {
-    const response = await apiInstance.post('/auth/users/activation', body);
+    const response = await apiInstance.post('/auth/users/activation/', body);
 
     return { code: response.status, data: response.data };
   } catch (error) {
