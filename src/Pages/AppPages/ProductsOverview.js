@@ -8,26 +8,28 @@ import Input from '../../Components/AppComponents/Input/Input';
 import Sheet from '../../Components/AppComponents/Sheet/Sheet';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import { AppLayout } from '../../Styles/Layouts';
-import { getAllItems } from '../../Utils/Items';
+import { getAllItems, createItem } from '../../Utils/Items';
+
+const defaultProduct = { name: '', link: '' };
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [sheetOpen, setSheetOpen] = useState(false);
-  const [product, setProduct] = useState({ name: '', link: '' });
+  const [product, setProduct] = useState(defaultProduct);
   const canRequest = useMemo(() => product.name && product.link, [product]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const items = await getAllItems();
-        setProducts(items);
-      } catch (error) {
-        console.error('Error fetching items:', error);
-      }
-    };
+  const fetchProducts = async () => {
+    try {
+      const items = await getAllItems();
+      setProducts(items);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
 
-    fetchData();
+  useEffect(() => {
+    fetchProducts();
   }, []);
 
   const setProductByKey = (key, value) => {
@@ -57,8 +59,9 @@ function ProductsPage() {
   };
 
   const handleRequest = async () => {
-    console.log('Product Name:', product.name);
-    console.log('Product Link:', product.link);
+    await createItem(product);
+    await fetchProducts();
+    setProduct(defaultProduct);
     setSheetOpen(false);
   };
 

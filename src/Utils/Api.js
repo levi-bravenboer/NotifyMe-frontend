@@ -13,14 +13,14 @@ export const apiInstance = axios.create({
   },
 });
 
-export const authApi = axios.create({
+export const afterAuthApi = axios.create({
   baseURL: `${DOMAIN_URL}/api/`,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-authApi.interceptors.request.use(
+afterAuthApi.interceptors.request.use(
   (config) => {
     const authTokens = localStorage.getItem('authTokens');
     if (authTokens) {
@@ -30,15 +30,14 @@ authApi.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.log('___ ~ error:', error);
+    console.log(error);
     return Promise.reject(error);
   }
 );
 
-authApi.interceptors.response.use(
+afterAuthApi.interceptors.response.use(
   (response) => response,
   (error) => {
-    console.log('___ ~ error:', error);
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('authTokens');
       window.location.href = '/login';
