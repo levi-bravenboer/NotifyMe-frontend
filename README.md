@@ -93,6 +93,11 @@ For API documentation, refer to the following endpoints:
 4. After submitting, check your email for the activation link.
 5. Copy the URL from the activation email, paste it into your browser, and change the protocol from `https` to `http`.
 
+> **Note:** Because of former bugs, I created a fixed account for a broken email flow from the backend.
+>
+> **Username:** test-gebruiker@levibravenboer.nl  
+> **Password:** Password123
+
 ---
 
 ## Code Formatting & Linting

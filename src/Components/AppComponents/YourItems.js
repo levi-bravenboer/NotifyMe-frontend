@@ -15,7 +15,7 @@ function YourItems() {
           <StyledSubTitle>0 day remaining</StyledSubTitle>
         </StyledDetail>
       </StyledProject>
-      <StyledLink to={'/app/my-items'}>See all your items</StyledLink>
+      <StyledLink to={'/app/products'}>See all items</StyledLink>
     </StyledContainer>
   );
 }

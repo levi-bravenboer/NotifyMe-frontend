@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { BiPlus } from 'react-icons/bi';
 import { FaMagnifyingGlass, FaLink, FaShirt } from 'react-icons/fa6';
 import styled from 'styled-components';
 import Button from '../../Components/AppComponents/Button/Button';
-import DataTable from '../../Components/AppComponents/Datatable/Datatable';
 import Datatable from '../../Components/AppComponents/Datatable/Datatable';
 import Input from '../../Components/AppComponents/Input/Input';
 import Sheet from '../../Components/AppComponents/Sheet/Sheet';
@@ -16,6 +15,7 @@ function ProductsPage() {
   const [searchValue, setSearchValue] = useState('');
   const [sheetOpen, setSheetOpen] = useState(false);
   const [product, setProduct] = useState({ name: '', link: '' });
+  const canRequest = useMemo(() => product.name && product.link, [product]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,9 +59,8 @@ function ProductsPage() {
   const handleRequest = async () => {
     console.log('Product Name:', product.name);
     console.log('Product Link:', product.link);
+    setSheetOpen(false);
   };
-
-  const canRequest = () => product.name && product.link;
 
   return (
     <AppLayout>
@@ -84,7 +83,6 @@ function ProductsPage() {
           />
         </StyledHeader>
         <Datatable columns={columns} data={filteredProducts} />
-        <DataTable columns={columns} data={filteredProducts} />
         <Sheet isOpen={sheetOpen} onClose={handleCloseSheet}>
           <SheetContent>
             <h2>Request Product</h2>
@@ -105,7 +103,7 @@ function ProductsPage() {
               />
             </StyledInputContainer>
             <StyledFooter>
-              <StyledButton onClick={handleRequest} disabled={!canRequest()}>
+              <StyledButton onClick={handleRequest} disabled={!canRequest}>
                 <span>Request</span>
               </StyledButton>
             </StyledFooter>

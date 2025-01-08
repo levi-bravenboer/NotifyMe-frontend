@@ -30,6 +30,7 @@ authApi.interceptors.request.use(
     return config;
   },
   (error) => {
+    console.log('___ ~ error:', error);
     return Promise.reject(error);
   }
 );
@@ -37,6 +38,7 @@ authApi.interceptors.request.use(
 authApi.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.log('___ ~ error:', error);
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('authTokens');
       window.location.href = '/login';

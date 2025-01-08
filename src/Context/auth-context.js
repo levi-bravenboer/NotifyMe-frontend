@@ -71,9 +71,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error(error.response, 'err');
       logoutUser();
-      if (loading) {
-        setLoading(false);
-      }
+      setLoading(false);
     }
   };
   /**
