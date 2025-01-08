@@ -1,30 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { BiPlus } from 'react-icons/bi';
-import { FaMagnifyingGlass } from 'react-icons/fa6';
+import { FaMagnifyingGlass, FaLink, FaShirt } from 'react-icons/fa6';
 import styled from 'styled-components';
 import Button from '../../Components/AppComponents/Button/Button';
 import Datatable from '../../Components/AppComponents/Datatable/Datatable';
 import Input from '../../Components/AppComponents/Input/Input';
+import Sheet from '../../Components/AppComponents/Sheet/Sheet';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import { AppLayout } from '../../Styles/Layouts';
-import { getAllItems } from '../../Utils/Items';
+import { getAllItems, createItem } from '../../Utils/Items';
+
+const defaultProduct = { name: '', link: '' };
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [product, setProduct] = useState(defaultProduct);
+  const canRequest = useMemo(() => product.name && product.link, [product]);
+
+  const fetchProducts = async () => {
+    try {
+      const items = await getAllItems();
+      setProducts(items);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const items = await getAllItems();
-        setProducts(items);
-      } catch (error) {
-        console.error('Error fetching items:', error);
-      }
-    };
-
-    fetchData();
+    fetchProducts();
   }, []);
+
+  const setProductByKey = (key, value) => {
+    setProduct((prevProduct) => ({
+      ...prevProduct,
+      [key]: value,
+    }));
+  };
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -37,6 +50,21 @@ function ProductsPage() {
     { Header: 'Status', accessor: 'acceptance_status' },
   ];
 
+  const handleOpenSheet = () => {
+    setSheetOpen(true);
+  };
+
+  const handleCloseSheet = () => {
+    setSheetOpen(false);
+  };
+
+  const handleRequest = async () => {
+    await createItem(product);
+    await fetchProducts();
+    setProduct(defaultProduct);
+    setSheetOpen(false);
+  };
+
   return (
     <AppLayout>
       <Sidebar />
@@ -44,7 +72,7 @@ function ProductsPage() {
         <StyledHeader>
           <LeftSection>
             <h1>Products</h1>
-            <StyledButton>
+            <StyledButton onClick={handleOpenSheet}>
               <StyledIcon />
               <span>Request product</span>
             </StyledButton>
@@ -58,6 +86,32 @@ function ProductsPage() {
           />
         </StyledHeader>
         <Datatable columns={columns} data={filteredProducts} />
+        <Sheet isOpen={sheetOpen} onClose={handleCloseSheet}>
+          <SheetContent>
+            <h2>Request Product</h2>
+            <StyledInputContainer>
+              <Input
+                type="text"
+                placeholder="Product name"
+                value={product.name}
+                onChange={(e) => setProductByKey('name', e.target.value)}
+                icon={FaShirt}
+              />
+              <Input
+                type="text"
+                placeholder="Product url"
+                value={product.link}
+                onChange={(e) => setProductByKey('link', e.target.value)}
+                icon={FaLink}
+              />
+            </StyledInputContainer>
+            <StyledFooter>
+              <StyledButton onClick={handleRequest} disabled={!canRequest}>
+                <span>Request</span>
+              </StyledButton>
+            </StyledFooter>
+          </SheetContent>
+        </Sheet>
       </StyledContainer>
     </AppLayout>
   );
@@ -94,6 +148,25 @@ const StyledIcon = styled(BiPlus)`
   vertical-align: middle;
   position: relative;
   top: -0.1em;
+`;
+
+const StyledInputContainer = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const SheetContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const StyledFooter = styled.div`
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export default ProductsPage;

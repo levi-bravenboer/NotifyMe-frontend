@@ -66,7 +66,10 @@ function CostCalculator() {
             placeholder="Select item"
             options={dropdownData}
           />
-          <Button onClick={addItem} disabled={!selectedItem || rows.length > 4}>
+          <Button
+            onClick={addItem}
+            disabled={!selectedItem || rows.length >= 5}
+          >
             <StyledIcon />
           </Button>
           <span>{`Items ${rows.length} / 5`}</span>

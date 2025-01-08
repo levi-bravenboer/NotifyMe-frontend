@@ -10,7 +10,7 @@
 6. [Code Formatting & Linting](#code-formatting-and-linting)
 7. [Using NVM for Node.js](#using-nvm-for-nodejs)
 8. [NPM Scripts](#npm-scripts)
-9. [Product Owner](#product-owner)
+9. [Project Owner](#product-owner)
 
 ---
 
@@ -20,7 +20,7 @@ This README describes the web application **Notify Me**.
 
 Ever had that special bag or coat you wanted to buy, but it’s always sold out? With **Notify Me**, you can subscribe to an item and receive notifications when it’s back in stock.
 
-Through this web app, you can track any item, view its status, and access past data regarding its availability, such as **out of stock** or **in stock** notifications.
+Through this web app, you can track any item, view it's status, and access past data regarding its availability, such as **out of stock** or **in stock** notifications.
 
 **Home Page:**
 
@@ -92,6 +92,11 @@ For API documentation, refer to the following endpoints:
 3. Fill out the registration form.
 4. After submitting, check your email for the activation link.
 5. Copy the URL from the activation email, paste it into your browser, and change the protocol from `https` to `http`.
+
+> **Note:** Because of former bugs, I created a fixed account for a broken email flow from the backend.
+>
+> **Username:** test-gebruiker@levibravenboer.nl  
+> **Password:** Password123
 
 ---
 
@@ -195,7 +200,7 @@ Here are the key NPM scripts available for this project:
 
 ---
 
-## Product Owner
+## Project Owner
 
 This project was created and is maintained by **Levi Bravenboer**.
 
