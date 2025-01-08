@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthPopupModal from './Components/AuthPopup/AuthModal';
 import { AuthProvider } from './Context/auth-context';
 import CostCalculatorPage from './Pages/AppPages/CostCalculator';
-import DashboardPage from './Pages/AppPages/dashboard';
-import MePage from './Pages/AppPages/me';
+import DashboardPage from './Pages/AppPages/Dashboard';
+import ProductFollowerPage from './Pages/AppPages/ProductFollower';
 import ProductsPage from './Pages/AppPages/ProductsOverview';
 import ErrorPage from './Pages/error';
 import DiscoverPage from './Pages/LandingsPages/discover';
@@ -57,7 +57,10 @@ function App() {
             />
             <Route path="/app/products" element={<ProductsPage />} />
             <Route path="/app/products/:slug" element={<ProductsPage />} />
-            <Route path="/app/me" element={<MePage />} />
+            <Route
+              path="/app/product-follower"
+              element={<ProductFollowerPage />}
+            />
           </Route>
 
           <Route path="*" element={<ErrorPage />} />

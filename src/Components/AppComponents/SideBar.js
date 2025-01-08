@@ -1,11 +1,6 @@
 import React, { useContext, useMemo } from 'react';
-import { AiOutlineUser, AiFillSkin } from 'react-icons/ai';
-import {
-  RiHomeLine,
-  RiFileCopyLine,
-  RiLogoutBoxLine,
-  RiCalculatorFill,
-} from 'react-icons/ri';
+import { AiOutlineUser, AiFillSkin, AiFillHeart } from 'react-icons/ai';
+import { RiHomeLine, RiLogoutBoxLine, RiCalculatorFill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import AvatarImage from '../../Assets/round_avatar.png';
@@ -44,9 +39,9 @@ function Sidebar() {
         icon: AiFillSkin,
       },
       {
-        title: 'My settings',
-        navigationPath: '/app/me',
-        icon: AiOutlineUser,
+        title: 'Product follower',
+        navigationPath: '/app/product-follower',
+        icon: AiFillHeart,
       },
     ],
     []
