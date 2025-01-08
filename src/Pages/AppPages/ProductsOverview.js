@@ -39,9 +39,11 @@ function ProductsPage() {
     }));
   };
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }, [products, searchValue]);
 
   const columns = [
     { Header: 'Name', accessor: 'name' },

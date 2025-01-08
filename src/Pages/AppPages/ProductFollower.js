@@ -1,15 +1,15 @@
 import React from 'react';
-import ComingSoon from '../../Components/AppComponents/ComingSoon';
+import ProductFollower from '../../Components/AppComponents/ProductFollower';
 import Sidebar from '../../Components/AppComponents/SideBar';
 import { AppLayout } from '../../Styles/Layouts';
 
-function MePage() {
+function ProductFollowerPage() {
   return (
     <AppLayout>
       <Sidebar />
-      <ComingSoon />
+      <ProductFollower />
     </AppLayout>
   );
 }
 
-export default MePage;
+export default ProductFollowerPage;
