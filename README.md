@@ -1,6 +1,6 @@
 # Notify Me Webapp
 
-## Inhoudsopgave
+## Table of contents
 
 1. [Introduction](#introduction)
 2. [Needed Software](#needed-software)
@@ -52,21 +52,21 @@ To run the project locally, follow these steps:
 1. Open a terminal.
 2. Clone the repository:
 
-   \`\`\`bash
-   git clone <repository-url>
-   \`\`\`
+   ```bash
+   git clone https://github.com/levi-bravenboer/NotifyMe-frontend.git
+   ```
 
 3. Navigate into the project folder and install dependencies:
 
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 4. Start the application:
 
-   \`\`\`bash
+   ```bash
    npm start
-   \`\`\`
+   ```
 
 Once the application is running, open [http://localhost:3000](http://localhost:3000) in your web browser.
 
@@ -76,12 +76,53 @@ Once the application is running, open [http://localhost:3000](http://localhost:3
 
 This project uses a custom backend built with **Django Rest Framework**, hosted on **Heroku**.
 
-For API documentation, refer to the following endpoints:
+### Authentication
 
-- [Swagger Documentation](https://notifyme-be-staging.herokuapp.com/swagger/)
-- [ReDoc Documentation](https://notifyme-be-staging.herokuapp.com/redoc/)
+The API supports token-based authentication and session authentication. Ensure to include the appropriate authentication headers in your requests.
 
-> **Note:** When using activation email URLs, please change the protocol from `https` to `http` in the browser.
+### Endpoints
+
+1. **Items**
+
+   - **URL:** `/api/items/`
+   - **Method:** GET, POST
+   - **Description:** Manage items. Supports listing and creating items.
+   - **Authentication:** Required
+
+2. **Users**
+
+   - **URL:** `/api/users/`
+   - **Method:** GET, POST
+   - **Description:** Manage users. Supports listing and creating users.
+   - **Authentication:** Required
+
+3. **Authentication**
+
+   - **URL:** `/api/auth/`
+   - **Method:** POST
+   - **Description:** Authenticate users and obtain tokens.
+   - **Authentication:** None
+
+4. **JWT Authentication**
+
+   - **URL:** `/api/auth/`
+   - **Method:** POST
+   - **Description:** Authenticate users using JWT.
+   - **Authentication:** None
+
+5. **Application Status**
+   - **URL:** `/api/status/`
+   - **Method:** GET
+   - **Description:** Retrieve the current status of the application.
+   - **Response:**
+     ```json
+     {
+       "cold_start": false,
+       "database": true,
+       "services": true
+     }
+     ```
+   - **Authentication:** None
 
 ---
 
@@ -94,6 +135,7 @@ For API documentation, refer to the following endpoints:
 5. Copy the URL from the activation email, paste it into your browser, and change the protocol from `https` to `http`.
 
 > **Note:** Because of former bugs, I created a fixed account for a broken email flow from the backend.
+> During testing the flow works for me, this is just incase of emergency
 >
 > **Username:** test-gebruiker@levibravenboer.nl  
 > **Password:** Password123
