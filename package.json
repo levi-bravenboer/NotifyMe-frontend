@@ -1,70 +1,69 @@
 {
-  "name": "src",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "axios": "^1.7.9",
-    "dayjs": "^1.11.13",
-    "font-awesome": "^4.7.0",
-    "formik": "^2.4.6",
-    "jest-dom": "^4.0.0",
-    "jwt-decode": "^4.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-fontawesome": "^1.7.1",
-    "react-hook-form": "^7.54.2",
-    "react-icons": "^5.3.0",
-    "react-router-dom": "^7.0.1",
-    "react-scripts": "^5.0.1",
-    "react-test-renderer": "^19.0.0",
-    "styled-components": "^6.1.14",
-    "watchman": "^1.0.0",
-    "web-vitals": "^4.2.4",
-    "yup": "^1.4.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
-    "prepare": "husky install",
-    "lint:staged": "lint-staged"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@svgr/webpack": "^8.1.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "eslint": "^9.16.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.37.4",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.3.0",
-    "postcss": "^8.4.49",
-    "prettier": "^3.4.2",
-    "svgo": "^3.3.2",
-    "webpack": "^5.97.1"
-  }
+	"name": "src",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"dependencies": {
+		"@testing-library/jest-dom": "^6.6.3",
+		"axios": "^1.7.9",
+		"dayjs": "^1.11.13",
+		"font-awesome": "^4.7.0",
+		"formik": "^2.4.6",
+		"jwt-decode": "^4.0.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-fontawesome": "^1.7.1",
+		"react-hook-form": "^7.54.2",
+		"react-icons": "^5.3.0",
+		"react-router-dom": "^6.14.2",
+		"react-scripts": "^5.0.1",
+		"react-test-renderer": "^18.2.0",
+		"styled-components": "^6.1.14",
+		"web-vitals": "^4.2.4",
+		"yup": "^1.4.0"
+	},
+	"devDependencies": {
+		"@babel/plugin-transform-class-properties": "^7.25.9",
+		"@babel/plugin-transform-nullish-coalescing-operator": "^7.26.5",
+		"@babel/plugin-transform-numeric-separator": "^7.25.9",
+		"@babel/plugin-transform-optional-chaining": "^7.25.9",
+		"@babel/plugin-transform-private-methods": "^7.25.9",
+		"@babel/plugin-transform-private-property-in-object": "^7.21.11",
+		"@rollup/plugin-terser": "^0.4.4",
+		"@svgr/webpack": "^8.1.0",
+		"eslint": "^8.57.1",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"eslint-plugin-react": "^7.37.4",
+		"glob": "^11.0.1",
+		"husky": "^8.0.0",
+		"lint-staged": "^15.3.0",
+		"postcss": "^8.4.31",
+		"prettier": "^3.4.2",
+		"rimraf": "^6.0.1",
+		"svgo": "^3.3.2",
+		"webpack": "^5.97.1"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"eject": "react-scripts eject",
+		"lint": "eslint --ext .js,.jsx,.ts,.tsx --fix src/",
+		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+		"lint:staged": "lint-staged",
+		"prepare": "husky install"
+	},
+	"resolutions": {
+		"inflight": "1.0.6",
+		"stable": "^1.0.0",
+		"postcss": "^8.4.31",
+		"test": "echo \"No tests specified\" && exit 0"
+	},
+	"lint-staged": {
+		"src/**/*.{js,jsx,ts,tsx}": [
+			"eslint --fix",
+			"prettier --write"
+		]
+	}
 }
