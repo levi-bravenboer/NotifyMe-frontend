@@ -9,7 +9,7 @@
 5. [How to Register](#how-to-register)
 6. [Code Formatting & Linting](#code-formatting-and-linting)
 7. [Using NVM for Node.js](#using-nvm-for-nodejs)
-8. [NPM Scripts](#npm-scripts)
+8. [Yarn Commands](#yarn-commands)
 9. [Project Owner](#product-owner)
 
 ---
@@ -20,7 +20,7 @@ This README describes the web application **Notify Me**.
 
 Ever had that special bag or coat you wanted to buy, but it’s always sold out? With **Notify Me**, you can subscribe to an item and receive notifications when it’s back in stock.
 
-Through this web app, you can track any item, view it's status, and access past data regarding its availability, such as **out of stock** or **in stock** notifications.
+Through this web app, you can track any item, view its status, and access past data regarding its availability, such as **out of stock** or **in stock** notifications.
 
 **Home Page:**
 
@@ -39,7 +39,7 @@ This project was created using [Create React App](https://github.com/facebook/cr
 Before starting, make sure you have the following software installed:
 
 1. **Node.js** _(version v20.0.0 or higher)_
-2. **NPM** _(comes with Node.js)_
+2. **Yarn** _(package manager for Node.js)_
 3. **Git**
 4. **Google Account** _(for authentication purposes)_
 
@@ -59,13 +59,13 @@ To run the project locally, follow these steps:
 3. Navigate into the project folder and install dependencies:
 
    ```bash
-   npm install
+   yarn install
    ```
 
 4. Start the application:
 
    ```bash
-   npm start
+   yarn start
    ```
 
 Once the application is running, open [http://localhost:3000](http://localhost:3000) in your web browser.
@@ -135,7 +135,7 @@ The API supports token-based authentication and session authentication. Ensure t
 5. Copy the URL from the activation email, paste it into your browser, and change the protocol from `https` to `http`.
 
 > **Note:** Because of former bugs, I created a fixed account for a broken email flow from the backend.
-> During testing the flow works for me, this is just incase of emergency
+> During testing the flow works for me, this is just in case of emergency
 >
 > **Username:** test-gebruiker@levibravenboer.nl  
 > **Password:** Password123
@@ -161,13 +161,13 @@ To configure Husky, Prettier, and ESLint:
 - **Format Code**: Run Prettier to format the entire codebase:
 
   ```bash
-  npm run format
+  yarn format
   ```
 
 - **Lint Code**: Check the code for linting errors:
 
   ```bash
-  npm run lint
+  yarn lint
   ```
 
 Both formatting and linting are automatically triggered before committing code using Husky and `lint-staged`.
@@ -233,12 +233,14 @@ This ensures your project is using the correct version of Node.js as required.
 
 ---
 
-## NPM Scripts
+## Yarn Commands
 
-Here are the key NPM scripts available for this project:
+Here are the key Yarn commands available for this project:
 
-- **\`npm start\`**: Runs the project in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-- **\`npm run build\`**: Builds the app for production. Creates optimized JavaScript, HTML, and CSS files ready for deployment.
+- **`yarn start`**: Runs the project in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **`yarn build`**: Builds the app for production. Creates optimized JavaScript, HTML, and CSS files ready for deployment.
+- **`yarn lint`**: Runs ESLint to check for coding errors.
+- **`yarn format`**: Runs Prettier to format the codebase.
 
 ---
 

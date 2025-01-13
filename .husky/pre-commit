@@ -1,4 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Run lint-staged
 npx lint-staged
+
+#check dependencies
+yarn audit --groups dependencies
+
