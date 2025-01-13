@@ -18,7 +18,7 @@
     "react-router-dom": "^7.0.1",
     "react-scripts": "^3.0.1",
     "react-test-renderer": "^19.0.0",
-    "styled-components": "^6.1.13",
+    "styled-components": "^6.1.14",
     "watchman": "^1.0.0",
     "web-vitals": "^4.2.4",
     "yup": "^1.4.0"
